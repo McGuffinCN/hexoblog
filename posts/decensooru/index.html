@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="baidu-site-verification" content="DwksQysBYP">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"guff.in","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="在图站Danbooru中要查看特定标签的的图片需要金会员，当然极客老司机们是不会乖乖交钱的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何查看Danbooru中被屏蔽的图片">
+<meta property="og:url" content="https://guff.in/posts/decensooru/index.html">
+<meta property="og:site_name" content="苏格兰高地没有狮子">
+<meta property="og:description" content="在图站Danbooru中要查看特定标签的的图片需要金会员，当然极客老司机们是不会乖乖交钱的。">
+<meta property="og:image" content="https://raw.githubusercontent.com/friendlyanon/decensooru/master/img/bbb_settings.png">
+<meta property="article:published_time" content="2019-07-08T09:58:04.000Z">
+<meta property="article:modified_time" content="2019-07-08T09:58:04.000Z">
+<meta property="article:author" content="McGuffin">
+<meta property="article:tag" content="Danbooru">
+<meta property="article:tag" content="油猴">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/friendlyanon/decensooru/master/img/bbb_settings.png">
+
+<link rel="canonical" href="https://guff.in/posts/decensooru/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>如何查看Danbooru中被屏蔽的图片 | 苏格兰高地没有狮子</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f1dcd3089c9aff08da4af0e28cfae827";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">苏格兰高地没有狮子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">There are no lions in the Scottish Highlands.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://guff.in/posts/decensooru/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.ax1x.com/2020/03/09/8plPfJ.jpg">
+      <meta itemprop="name" content="McGuffin">
+      <meta itemprop="description" content="麦高芬其实什么也不是。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏格兰高地没有狮子">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何查看Danbooru中被屏蔽的图片
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-07-08 17:58:04" itemprop="dateCreated datePublished" datetime="2019-07-08T17:58:04+08:00">2019-07-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%81%E5%8F%B8%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">老司机</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/posts/decensooru/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/decensooru/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在图站Danbooru中要查看特定标签的的图片需要金会员，当然极客老司机们是不会乖乖交钱的。</p>
+<a id="more"></a>
+<h1 id="什么是Danbooru"><a href="#什么是Danbooru" class="headerlink" title="什么是Danbooru"></a>什么是Danbooru</h1><p><a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>是一个基于标签管理的二次元图像存档网站，用户可以自用上传和搜索图片，站长将源代码开源在<a href="https://github.com/r888888888/danbooru" target="_blank" rel="noopener">Github</a>上，Gelbooru、Yandere、Konachan等图站都基于此系统建立，统称为Image Boorus，不过他们之间数据并不互通。</p>
+<h1 id="为什么使用Danbooru"><a href="#为什么使用Danbooru" class="headerlink" title="为什么使用Danbooru"></a>为什么使用Danbooru</h1><p>Danbooru对图片的标签化几乎严谨到了极致，从肤色、发色、瞳色到发型、动作、出处，几乎图片上能看到的一切信息都是Danbooru的标签对象。如果SauceNao等以图搜图网站没有找出你要的结果，Danbooru是个不错的选择。</p>
+<h1 id="安装和使用"><a href="#安装和使用" class="headerlink" title="安装和使用"></a>安装和使用</h1><h2 id="安装用户脚本管理器"><a href="#安装用户脚本管理器" class="headerlink" title="安装用户脚本管理器"></a>安装用户脚本管理器</h2><p>请根据自己使用的浏览器在下列选项中选择一个安装。</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>可选的扩展</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td><a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="noopener">Tampermonkey</a> <a href="https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag" target="_blank" rel="noopener">Violentmonkey</a></td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td><a href="https://addons.mozilla.org/firefox/addon/greasemonkey/" target="_blank" rel="noopener">Greasemonkey</a> <a href="https://addons.mozilla.org/firefox/addon/tampermonkey/" target="_blank" rel="noopener">Tampermonkey</a> <a href="https://addons.mozilla.org/firefox/addon/violentmonkey/" target="_blank" rel="noopener">Violentmonkey</a></td>
+</tr>
+<tr>
+<td>Safari</td>
+<td><a href="http://tampermonkey.net/?browser=safari" target="_blank" rel="noopener">Tampermonkey</a></td>
+</tr>
+<tr>
+<td>Microsoft Edge</td>
+<td><a href="https://www.microsoft.com/store/p/tampermonkey/9nblggh5162s" target="_blank" rel="noopener">Tampermonkey</a></td>
+</tr>
+<tr>
+<td>Opera</td>
+<td><a href="https://addons.opera.com/extensions/details/tampermonkey-beta/" target="_blank" rel="noopener">Tampermonkey</a> <a href="https://addons.opera.com/extensions/details/violent-monkey/" target="_blank" rel="noopener">Violentmonkey</a></td>
+</tr>
+<tr>
+<td>其他浏览器</td>
+<td>请在各自的扩展中心内搜索</td>
+</tr>
+</tbody></table>
+<h2 id="安装油猴脚本BBB"><a href="#安装油猴脚本BBB" class="headerlink" title="安装油猴脚本BBB"></a>安装油猴脚本BBB</h2><a class="btn" href="https://greasyfork.org/zh-CN/scripts/3575-better-better-booru/" target="_blank" rel="noopener">脚本地址</a> [源码地址](https://github.com/pseudonymous/better-better-booru/)
+<p>安装完成后访问<a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>，页眉菜单会多出一项<code>BBB Settings</code>，点击并将以下设置项勾选。</p>
+<p><img data-src="https://raw.githubusercontent.com/friendlyanon/decensooru/master/img/bbb_settings.png" alt=""><br>点击<code>Save &amp; Close</code>后会显示被屏蔽的图片的<strong>占位符</strong>（显示为Hidden）。</p>
+<h2 id="安装油猴脚本decensooru"><a href="#安装油猴脚本decensooru" class="headerlink" title="安装油猴脚本decensooru"></a>安装油猴脚本decensooru</h2><p>根据浏览器版本选择其一。</p>
+<a class="btn" href="https://github.com/friendlyanon/decensooru/raw/master/decensooru_es6.user.js" target="_blank" rel="noopener">旧版浏览器(支持ECMAScript2015)</a> &nbsp;
+<a class="btn" href="https://github.com/friendlyanon/decensooru/raw/master/decensooru.user.js" target="_blank" rel="noopener">新版浏览器(支持ECMAScript2017)</a> [源码地址](https://github.com/friendlyanon/decensooru)
+
+<p>如果你不确定你的浏览器支持什么版本的ECMAScript，直接安装第一个。或者，你可以在<a href="http://kangax.github.io/compat-table/es2016plus/#test-async_functions" target="_blank" rel="noopener">这里</a>检查浏览器兼容性，如果你的浏览器得分是15/15，请安装第二个。</p>
+<p>安装完成后访问<a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>，点击右上角的<code>Click here to begin initial Decensooru setup</code>，几分钟内将自动配置完毕。</p>
+<p>现在你可以像金会员一样随意浏览Danbooru了。</p>
+<h2 id="如果你没看懂……"><a href="#如果你没看懂……" class="headerlink" title="如果你没看懂……"></a>如果你没看懂……</h2><p><a href="https://streamable.com/utqxa" target="_blank" rel="noopener">傻瓜视频教程</a></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>您的支持是我创作的动力！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="https://s2.ax1x.com/2020/03/09/8pocqJ.png" alt="McGuffin WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="https://s2.ax1x.com/2020/03/09/8poyMF.png" alt="McGuffin Alipay">
+        <p>Alipay</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Danbooru/" rel="tag"># Danbooru</a>
+              <a href="/tags/%E6%B2%B9%E7%8C%B4/" rel="tag"># 油猴</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/baidu_google_css/" rel="prev" title="支持自定义背景的百度/谷歌CSS美化样式">
+      <i class="fa fa-chevron-left"></i> 支持自定义背景的百度/谷歌CSS美化样式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/originiums/" rel="next" title="原创MIUI主题《源石》">
+      原创MIUI主题《源石》 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Danbooru"><span class="nav-number">1.</span> <span class="nav-text">什么是Danbooru</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么使用Danbooru"><span class="nav-number">2.</span> <span class="nav-text">为什么使用Danbooru</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装和使用"><span class="nav-number">3.</span> <span class="nav-text">安装和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装用户脚本管理器"><span class="nav-number">3.1.</span> <span class="nav-text">安装用户脚本管理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装油猴脚本BBB"><span class="nav-number">3.2.</span> <span class="nav-text">安装油猴脚本BBB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装油猴脚本decensooru"><span class="nav-number">3.3.</span> <span class="nav-text">安装油猴脚本decensooru</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果你没看懂……"><span class="nav-number">3.4.</span> <span class="nav-text">如果你没看懂……</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="McGuffin"
+      src="https://s2.ax1x.com/2020/03/09/8plPfJ.jpg">
+  <p class="site-author-name" itemprop="name">McGuffin</p>
+  <div class="site-description" itemprop="description">麦高芬其实什么也不是。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/McGuffinCN" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;McGuffinCN" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:superass@126.com" title="E-Mail → mailto:superass@126.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/SuperBillyWong" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;SuperBillyWong" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/McGuffinCN" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;McGuffinCN" rel="noopener" target="_blank"><i class="fa fa-fw fa-steam"></i>Steam</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/840168" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;840168" rel="noopener" target="_blank"><i class="fa fa-fw fa-play-circle"></i>Bilibili</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/3626415060" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3626415060" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.ultrabluefire.cn/" title="https:&#x2F;&#x2F;blog.ultrabluefire.cn&#x2F;" rel="noopener" target="_blank">超威蓝火</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://aoki.store/" title="https:&#x2F;&#x2F;aoki.store&#x2F;" rel="noopener" target="_blank">青木数码</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md" title="https:&#x2F;&#x2F;github.com&#x2F;ryanhanwu&#x2F;How-To-Ask-Questions-The-Smart-Way&#x2F;blob&#x2F;master&#x2F;README-zh_CN.md" rel="noopener" target="_blank">提问的智慧</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">McGuffin</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '7mVfwAfT4lib6FDDUcUOasFk-MdYXbMMI',
+      appKey     : 'WSyHVwfnKEH75iCTtGJsOUhg',
+      placeholder: "留下您的评论",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

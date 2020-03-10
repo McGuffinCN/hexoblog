@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="baidu-site-verification" content="DwksQysBYP">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"guff.in","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文部分机翻自 MrDeepFakes Forums。DeepFaceLab 2.0是一款利用机器学习在视频中换脸的开源工具。其优点是无需配置环境，对Windows任何版本0依赖，上手简单且功能强大。但是请注意，DFL 2.0仅能在Nvidia显卡上运行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能换脸工具 DeepFaceLab 2.0 指南&#x2F;教程">
+<meta property="og:url" content="https://guff.in/posts/DeepFaceLab_Guide/index.html">
+<meta property="og:site_name" content="苏格兰高地没有狮子">
+<meta property="og:description" content="本文部分机翻自 MrDeepFakes Forums。DeepFaceLab 2.0是一款利用机器学习在视频中换脸的开源工具。其优点是无需配置环境，对Windows任何版本0依赖，上手简单且功能强大。但是请注意，DFL 2.0仅能在Nvidia显卡上运行。">
+<meta property="og:image" content="https://s2.ax1x.com/2020/02/15/1zVhE4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/02/27/3wQj1K.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/02/27/3wTBmq.png">
+<meta property="article:published_time" content="2020-02-27T13:24:30.271Z">
+<meta property="article:modified_time" content="2020-02-27T13:24:30.271Z">
+<meta property="article:author" content="McGuffin">
+<meta property="article:tag" content="视频">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="换脸">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2020/02/15/1zVhE4.png">
+
+<link rel="canonical" href="https://guff.in/posts/DeepFaceLab_Guide/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>人工智能换脸工具 DeepFaceLab 2.0 指南/教程 | 苏格兰高地没有狮子</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f1dcd3089c9aff08da4af0e28cfae827";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">苏格兰高地没有狮子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">There are no lions in the Scottish Highlands.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://guff.in/posts/DeepFaceLab_Guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.ax1x.com/2020/03/09/8plPfJ.jpg">
+      <meta itemprop="name" content="McGuffin">
+      <meta itemprop="description" content="麦高芬其实什么也不是。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏格兰高地没有狮子">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          人工智能换脸工具 DeepFaceLab 2.0 指南/教程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-27 21:24:30" itemprop="dateCreated datePublished" datetime="2020-02-27T21:24:30+08:00">2020-02-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%9B%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">创作</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/posts/DeepFaceLab_Guide/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/DeepFaceLab_Guide/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文部分机翻自 <a href="https://mrdeepfakes.com/forums/thread-guide-deepfacelab-2-0-explained-and-tutorials-recommended" target="_blank" rel="noopener">MrDeepFakes Forums</a>。<br>DeepFaceLab 2.0是一款利用机器学习在视频中换脸的开源工具。其优点是无需配置环境，对Windows任何版本0依赖，上手简单且功能强大。但是请注意，DFL 2.0仅能在Nvidia显卡上运行。</p>
+<a id="more"></a>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>DFL 2.0的GitHub页面（包含最新版本以及当前所有更新）：<a href="https://github.com/iperov/DeepFaceLab" target="_blank" rel="noopener"><strong>[GITHUB]</strong></a><br>稳定发布版本可以在这里找到：<a href="https://drive.google.com/drive/folders/17a9b9zmLdnAlItifcGSE9ixDIDAT3YxP" target="_blank" rel="noopener"><strong>[从GOOGLE DRIVE下载]</strong></a> <a href="https://rutracker.org/forum/viewtopic.php?t=5558863" target="_blank" rel="noopener"><strong>[使用TORRENT下载]</strong></a></p>
+<p>如果你没有NVIDIA的GPU，并且你的CPU无法在合理时间内训练，或者你不想使用DFL 1.0，你可以考虑试用Google云计算服务<a href="https://mrdeepfakes.com/forums/thread-guide-deepfacelab-google-colab-tutorial" target="_blank" rel="noopener">Google Colab</a>。</p>
+<hr>
+<h1 id="DFL结构说明"><a href="#DFL结构说明" class="headerlink" title="DFL结构说明"></a>DFL结构说明</h1><p>DeepFaceLab 2.0包含用于提取、训练和合并的.bat文件，这是创建deepfake的三个主要步骤，它们与两个子文件夹一起位于主文件夹中：</p>
+<ul>
+<li><code>_internal</code> （这是DFLs工作所需的所有必要文件）</li>
+<li><code>workspace</code> （这里存放模型、素材视频、Faceset和最后输出的视频）</li>
+</ul>
+<p><img data-src="https://s2.ax1x.com/2020/02/15/1zVhE4.png" alt="思维导图"></p>
+<hr>
+<h1 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h1><p>在开始之前，你需要准备<strong>源视频data_src.mp4</strong>和<strong>目标视频data_dst.mp4</strong>，并放置在workspace文件夹中。<br>部分.bat文件会提供若干选项，前面的<code>[]</code>内为默认值，即不输入任何值直接按回车则使用默认值，后面的<code>()</code>内为可供选择的选项，例如<br><code>[png] Output image format ( png/jpg ?:help ) :</code><br>不输入任何值直接按回车会使用默认值png；你可以输入<code>png</code>或者<code>jpg</code>再按回车来选择想要的格式；输入<code>?</code>（注意是半角问号）再按回车可以获得有关此选项的帮助。<br>以下步骤编号对应相应的.bat文件，请依次运行，但不是所有的步骤都有必要。</p>
+<hr>
+<h2 id="清理workspace"><a href="#清理workspace" class="headerlink" title="清理workspace"></a>清理workspace</h2><p>1) clear workspace.bat<br>如果你是第一次运行DFL，则无需进行这一步，因为workspace本来就是空的。如果你此前使用过DFL，而且想重新开始全新的训练，请运行。</p>
+<hr>
+<h2 id="从data-src-mp4提取帧"><a href="#从data-src-mp4提取帧" class="headerlink" title="从data_src.mp4提取帧"></a>从data_src.mp4提取帧</h2><p>2) extract images from video data_src.bat<br>这一步将会把data_src.mp4分解为图片序列并存储在data_src文件夹中。运行此.bat文件会提供如下选项：<br><code>Enter FPS</code><br>默认值0为使用src视频帧率，即视频每一帧都会被分解为图片并用于训练，但我们并不推荐这样做，因为数据并不是越多越好，相邻的帧区别并不大，对训练的作用非常有限，而且会极大拖慢训练速度。这里建议输入5-10之间的数字。<br><code>Output image format</code><br>选择提取的图片格式，JPG较小而且通常质量足够好，因此推荐使用JPG。</p>
+<hr>
+<h2 id="切割视频（可选）"><a href="#切割视频（可选）" class="headerlink" title="切割视频（可选）"></a>切割视频（可选）</h2><p>3) cut video (drop video on me).bat<br>如果你没有视频编辑软件，可以把视频拖到此处以快速切割为想要的长度。<br>会出现的选项：<br><code>From time</code> 视频开始时间；<br><code>End time</code> 视频结束时间；<br><code>Audio track</code> 音频，默认保留；<br><code>Bitrate</code> 更改视频比特率，最好保持默认值。</p>
+<hr>
+<h2 id="从data-dst-mp4提取帧"><a href="#从data-dst-mp4提取帧" class="headerlink" title="从data_dst.mp4提取帧"></a>从data_dst.mp4提取帧</h2><p>3) extract images from video data_dst FULL FPS.bat<br>同第2步，这一步将会把data_dst.mp4一帧帧分解为图片并存储在data_dst文件夹中。因为dst视频每一帧都需要被换脸，所以这里没有帧数选项。</p>
+<hr>
+<h2 id="从src数据提取面部"><a href="#从src数据提取面部" class="headerlink" title="从src数据提取面部"></a>从src数据提取面部</h2><p>有两种方法：<br>4) data_src extract faces MANUAL.bat （手动提取）<br>4) data_src extract faces S3FD.bat （使用SF3D算法自动提取，<strong>推荐</strong>）<br>可用选项：<br><code>Which GPU indexes to choose?</code><br>选择用于面部提取的GPU（或CPU），尽量使用高性能独立显卡；<br><code>Write debug images to aligned_debug</code><br>选择是否生成aligned_debug文件夹，可以选否。</p>
+<h3 id="查看src数据面部提取结果（可选）"><a href="#查看src数据面部提取结果（可选）" class="headerlink" title="查看src数据面部提取结果（可选）"></a>查看src数据面部提取结果（可选）</h3><p>4.1) data_src view aligned result.bat<br>此.bat会打开一个程序以查看src数据面部提取结果，请手动删除其中不是人脸的、方向错误的、过于模糊的、对训练没有帮助的图片。</p>
+<h3 id="src数据排序（可选）"><a href="#src数据排序（可选）" class="headerlink" title="src数据排序（可选）"></a>src数据排序（可选）</h3><p>4.2) data_src sort.bat<br>包含各种排序规则以帮助你寻找不需要的面部图片。<br>可用的选项：</p>
+<pre><code>[0] blur :模糊度
+[1] face yaw direction :面水平方向
+[2] face pitch direction :面俯仰方向
+[3] histogram similarity :直方图相似性
+[4] histogram dissimilarity :直方图差异
+[5] brightness :亮度
+[6] hue :色调
+[7] amount of black pixels :黑色像素数量
+[8] original filename :原始文件名
+[9] one face in image :同一张脸（？）
+[10] absolute pixel difference :绝对像素差
+[11] best faces :最佳面孔</code></pre><h3 id="其它可选项"><a href="#其它可选项" class="headerlink" title="其它可选项"></a>其它可选项</h3><p>4.2) data_src util add landmarks debug images.bat -在提取面部之后生成<code>aligned_debug</code>文件夹（如果你在之前的选项中忘记了）。<br>4.2) data_src util faceset enhance.bat -使用特殊的机器学习算法来提升/增强数据集中的面孔外观，如果数据集有点模糊或者你希望通过锐化使其具有更多的细节/纹理，则此算法非常有用。<br>4.2) data_src util faceset metadata restore.bat -还原面部集元数据。提取的面部图像含有对齐数据，所以如果直接编辑面部图片并保存的话会丢失这些数据，使用下面的保存元数据和这个还原元数据可以使元数据不被丢失。<br>4.2) data_src util faceset metadata save.bat -保存面部集元数据。<br>4.2) data_src util faceset pack.bat -将<code>aligned</code>文件夹中的所有面部图片打包成压缩文件。<br>4.2) data_src util faceset unpack.bat -解压上面打包的压缩文件。<br>4.2) data_src util recover original filename.bat -将面部图像的名称还原为原始顺序/文件名（排序后）。</p>
+<hr>
+<h2 id="从dst数据提取面部"><a href="#从dst数据提取面部" class="headerlink" title="从dst数据提取面部"></a>从dst数据提取面部</h2><p>5) data_dst extract faces MANUAL RE-EXTRACT DELETED ALIGNED_DEBUG.bat<br>5) data_dst extract faces MANUAL.bat<br>5) data_dst extract faces S3FD + manual fix.bat<br>5) data_dst extract faces S3FD.bat<br>一般运行第四个即可，工作方式与第四步相同。</p>
+<h3 id="查看dst数据面部提取结果（可选）"><a href="#查看dst数据面部提取结果（可选）" class="headerlink" title="查看dst数据面部提取结果（可选）"></a>查看dst数据面部提取结果（可选）</h3><p>5.1) data_dst view aligned results.bat<br>5.1) data_dst view aligned_debug results.bat<br>同4.1)</p>
+<h3 id="dst数据排序及其它可选项"><a href="#dst数据排序及其它可选项" class="headerlink" title="dst数据排序及其它可选项"></a>dst数据排序及其它可选项</h3><p>5.2) data_dst sort.bat<br>5.2) data_dst util faceset pack.bat<br>5.2) data_dst util faceset unpack.bat<br>5.2) data_dst util recover original filename.bat<br>同4.2)</p>
+<h3 id="dst数据蒙版编辑（可选）"><a href="#dst数据蒙版编辑（可选）" class="headerlink" title="dst数据蒙版编辑（可选）"></a>dst数据蒙版编辑（可选）</h3><p>5.3) data_dst mask editor.bat<br>允许您手动编辑提取面部的蒙版（这样您就可以在合并/转换后将部分面排除在外-如果面上不存在蒙版，则原始面/帧的部分将可见）。<br>此外，“蒙版编辑器”还有一个名为“Default eyebrows expand modifier”的选项-它允许您自动展开眉毛上方的蒙版，而无需手动编辑每个面部的蒙版，但它可能会导致侧面轮廓上的问题，而展开也会覆盖背景（建议仅用于正面角度和中等侧面角度）。</p>
+<hr>
+<h2 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h2><p>有两种训练模式：</p>
+<p><strong>6) train Quick96.bat</strong><br>源自SAE模型的简单模式，适合显存2-4G的低端GPU。<br>仅提供CPU/GPU的选项。</p>
+<p><strong>6) train SAEHD.bat</strong><br>高清自动编码器模式，用于具有至少6G显存的高端GPU。<br>拥有大量可定制选项：<br><code>Autobackup every N hour</code> （每N小时自动备份一次）<br>请至少每6小时备份一次。设置为0（默认值）将禁用自动备份。<br><code>Target iteration</code> （目标迭代）<br>在达到一定数量的迭代后，将自动停止训练。设置为0（默认值）则持续训练直到您手动停止它。一般效果良好的模型至少需要15万次迭代。<br><code>Flip faces randomly</code> （随机翻转面）<br>如果你的dst视频中的人露出了右脸，而你的src视频中只有左脸，请开启此功能。但是要记住，没有脸是完全对称的，如果src视频中的侧脸上有疤痕等特征，它会被一并镜像到另一边脸。默认值为n（禁用）。<br><code>Batch_size</code> （批量大小）<br>影响每次迭代时相互比较的面数。最低值是2，VRAM越高则可以设置越大的数字。作为参考，最高不超过20。<br><code>Resolution</code> （分辨率）<br>在这里设置模型分辨率，此选项在培训期间不能更改。它会影响交换面的分辨率，模型分辨率越高，学习面将越详细，但训练时间也会更久。分辨率可以从64x64增加到256x256，增量为16。<br><code>Face type</code> （面部类型）<br>此选项设置要训练的面区域，有3个选项-半面、中间半面和全面。<br><code>AE architecture</code> （AE架构）<br>此选项允许您在两种主要学习体系结构（df和liae）以及以性能为代价提供更高质量的HD版本之间进行选择。如果您有足够多的src和dst数据能使其面部朝向和表情一一对应，请选择df或dfhd；如果您的数据不足，可以使用liae或liaehd。</p>
+<p>接下来的4个选项会影响模型的学习能力，修改这些值会对学习性能和质量产生很大的影响，因此建议保留默认值。<br><code>AutoEncoder dimensions</code> （自动编码器尺寸）<br>自动编码器尺寸设置，影响模型学习面的整体能力。<br><code>Encoder dimensions</code> （编码器规模）<br>编码器规模设置，影响模型学习面的一般结构的能力。<br><code>Decoder dimensions</code> （解码器规模）<br>解码器规模设置，影响模型学习精细细节的能力。<br><code>Decoder mask dimensions</code> （解码器蒙版尺寸）<br>在启用学习蒙版的情况下进行训练时，蒙版解码器设置会影响学习蒙版的质量。不影响训练质量。</p>
+<p><code>Learn mask</code> （学习蒙版）<br>启用将生成learned mask。如果不启用此功能并在转换器中选择“learned mask”，则合并期间将默认使用dst蒙版。此功能对性能有较大影响但效果通常更好，所以最好在经过一定程度训练后启用并在5-6千次迭代后禁用（可在中途多次开关）。默认值为n（禁用）。<br><code>Place models and optimizer on GPU</code> （在GPU上放置模型和优化器）<br>启用会增加GPU负担并大大提高性能，但会导致batch size降低。如果出现OOM（内存不足）错误，则应禁用此功能。默认值为y（启用）。<br><code>Use learning rate dropout</code> （使用dropout率）<br>此功能应仅在训练结束时启用，并且如果启用了random warp of samples或者flip faces randomly功能则请勿启用此功能。它会让你在更少的迭代次数下得到更多的细节和清晰，但一般情况不会使用此功能。在模型训练完成之前启用可能会导致模型永远无法改进。默认值为n（禁用）。<br><code>Enable random warp of samples</code> （启用样本随机扭曲）<br>用于粗略学习面部特征，但无法学习细节。建议在模型仍在改善的情况下（通过查看减少的损失值和预览窗口）保持启用此功能，在几十万次迭代后你想得到更多的细节时再禁用。默认值为y（启用）。<br><code>GAN power</code> （GAN功率）<br>额外训练以获得更详细的面孔。仅当模型或多或少完成了训练（在禁用了random warp of samples之后）时才应启用此选项。建议从低值开始，然后一直到max来测试该特性是否能给出好的结果。如果结果不好，则需要禁用它并启用一段时间的random warp of samples，以便模型可以恢复。请考虑在启用此功能之前进行备份。默认值为0.0（禁用）。<br><code>&#39;True face&#39; power</code> （真实面孔权重）<br>目的是使最终面部看起来更像src面部，与GAN一样，只有当random warp of samples被禁用，并且模型或多或少经过了充分的训练后，再启用此功能。您同样应该从一个较低的值开始。如果结果不好，则需要禁用它，并启用一段时间的random warp of samples，以便模型可以恢复。请考虑在启用此功能之前进行备份。默认值为0.0（禁用）。<br><code>Face style power and Background style power</code> （面部权重与背景权重）<br>可以提高合并后的最终结果的质量和外观，但较高的值可能导致学习面看起来更像dst数据而不是src数据（嘴唇、眼睛、化妆品、肤色等）。建议开始时最多调至10，并在训练期间将其减少到1甚至0.1。此功能对性能有很大影响，并可能要求您降低batch size或禁用gpu优化器。请考虑在启用此功能之前进行备份。默认值为0.0（禁用）。<br><code>Color transfer for src faceset</code> （src面集肤色转换）<br>此功能用于将src数据的肤色与dst数据匹配，以使最终结果具有与dst数据相似的肤色/色调，并且在面部移动时不会改变肤色（如果从包含不同光照条件的不同来源获取不同的面部角度，则可能会发生这种情况）。<br><code>Enable gradient clipping</code> （启用渐变剪辑）<br>实现此功能是为了防止DFL可能发生的所谓模型折叠/损坏。它对性能的影响很小，因此如果您真的不想使用它，则必须启用自动备份，因为折叠的模型无法恢复，必须进行清理，并且从头开始训练。默认值是n（已禁用），但由于性能影响很低，防止模型崩溃可以节省大量时间，因此我建议始终在所有模型上启用它。<br><code>Enable pretraining mode</code> （启用预训练模式）<br>启用预训练过程，该过程使用随机人员面部数据集来初步训练模型，在训练到大约50k-100k次迭代后，当开始使用您要训练的src数据和dst数据时，可以恢复该模型，这节省了时间，因为您不必每次都从0开始训练。建议使用此功能对模型进行预训练，方法是使用随机人脸制作自己的src数据和dst数据。可以随时启用，但建议在开始时仅对模型进行一次pretrain（大约100-200k次迭代）。默认值为n（禁用）。</p>
+<p>训练至少15万次迭代后可以按回车结束训练。</p>
+<hr>
+<h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><p>6) train Quick96.bat<br>6) train SAEHD.bat<br>对应训练模式，上一步使用什么模式这一步就用什么模式。<br>两者都会出现以下选项：<br><code>Use interactive merger?</code> （使用交互式合并工具？）<br>默认值是 y (启用) ，强烈建议使用，因为它具有完整功能，还有一个交互式预览，更改各种选项和启用/禁用各种功能的效果将直接反映到屏幕中。<br><code>Choose one of saved models, or enter a name to create a new model.</code> （选择一个保存的模型，或者输入名字创建新模型）<br>选择刚刚训练好的模型，一般编号是0。<br><code>Choose one or several GPU idxs (separated by comma).</code> （你想使用哪个GPU或CPU进行合并？）<br>选择一个或多个GPU（用半角逗号分隔）。</p>
+<p>选择后将弹出一个命令行窗口和一个交互式预览窗口<br><img data-src="https://s2.ax1x.com/2020/02/27/3wQj1K.png" alt="3wQj1K.png"><br>命令行窗口显示的是<strong>当前帧应用的设置</strong>，在交互式预览窗口内按下<code>Tab键</code>可以切换<strong>主界面/帮助界面</strong>（默认处于帮助界面，请手动切换回主界面）。这些设置没有标准答案，请尝试多种组合并对比效果，直到满意为止。</p>
+<ol>
+<li><p>预览窗口操作：<br>按下<code>&lt;</code>/<code>&gt;</code>来后退/前进一个帧；<br>按下<code>Shift</code>+<code>&lt;</code>返回到第一帧，<code>Shift</code>+<code>&gt;</code>步进到最后一帧；<br>按下<code>Shift</code>+<code>/</code>将当前设置应用到之后所有的帧中<strong>（重要，不要傻傻地一帧帧改了）</strong>；<br>按下<code>Shift</code>+<code>M</code>将当前设置应用到之前所有的帧中；<br>按下<code>-/_</code>和<code>=/+</code>键以缩放预览窗口；<br>按下<code>Caps Lock</code>将数值增量从1改为10（举例：开启后，按下R将增加10个单位的运动模糊）。</p>
+</li>
+<li><p>主要叠加模式，按数字键切换:<br><code>1</code> original: 显示原始画面，不换脸；<br><code>2</code> overlay: 简单的学习面部直接覆盖到帧；<br><code>3</code> hist-match: 覆盖学习面部并基于histogram匹配（按<code>Z</code>键切换2个模式: normal和masked hist match）；<br><code>4</code> seamless: 使用 opencv poisson 无缝克隆函数将学习的面部融合到原始帧中；<br><code>5</code> seamless hist match: 结合了hist-match和seamless；<br><code>6</code> raw-rgb: 覆盖原始的学习面孔，没有任何遮蔽。<br>注意: Seamless模式可能会导致闪烁。</p>
+</li>
+<li><p>Hist-match阈值: 如果使用了hist-match或seamless hist-match叠加模式，可以按以下按键控制histogram匹配的强度：<br><code>Q</code> 增加值；<br><code>A</code> 减少值。</p>
+</li>
+<li><p>削弱蒙版: 控制蒙版的大小。<br><code>W</code> 缩小蒙版；<br><code>S</code> 放大蒙版。</p>
+</li>
+<li><p>模糊蒙版: 羽化蒙版的边缘，模糊度越高过渡越平滑：<br><code>E</code> 增加模糊度；<br><code>D</code> 减少模糊度。</p>
+</li>
+<li><p>运动模糊: 在运动比较激烈的帧增加这个值，反之减少。<br><code>R</code> 增加运动模糊；<br><code>F</code> 减少动态模糊。</p>
+</li>
+<li><p>超分辨率: 使用算法添加更多牙齿、眼睛等区域的细节。<br><code>T</code> 增强增强效应；<br><code>G</code> 降低增强效应。</p>
+</li>
+<li><p>模糊/锐化: 模糊或锐化学习的面部。<br><code>Y</code> 锐化；<br><code>H</code> 模糊；<br><code>N</code> 切换box/gaussian模式。</p>
+</li>
+<li><p>面部比例: 新面部的大小比例。<br><code>U</code> 缩小；<br><code>J</code> 放大。</p>
+</li>
+<li><p>蒙版模式: 有6种蒙版模式，按<code>X</code>切换:</p>
+</li>
+</ol>
+<ul>
+<li><strong>dst</strong>: 使用从目标数据提取过程中生成的地标形状派生的蒙版；</li>
+<li><strong>learned Mask</strong>: 使用在训练中习得的蒙版，如步骤6所述。 如果训练过程中Learned mask被禁用，将改用dst蒙版；</li>
+<li><strong>fan-prd</strong>: 第一种FANseg蒙版模式，它可以预测合并过程中蒙版的形状，并可以检测出障碍物（手、眼镜、其他遮住脸部的物体）。</li>
+<li><strong>fan-dst</strong>: 第二种FANseg蒙版模式，通过考虑蒙版形状的影响，预测蒙版合并过程中的蒙版形状；</li>
+<li><strong>fan-prd+fan-dst</strong>: 3rd FANseg 掩蔽方法，结合 fan-prd 和 fan-dst 方法；</li>
+<li><strong>fan-prd+fan-dst+learned</strong>: 结合fan-prd，fan-dst和learned mask的模式。<br>最快的蒙版模式是 dst，但它不能排除障碍物；learned mask在形状方面更好，但也不能排除障碍物；fan-dst比较慢，但可以排除障碍物，一般来说在大多数情况下足够好；fan-prd可能有点不可预测，所以不推荐；fan-dst+prd 并没有提升。第六个模式最好，但要求你在训练时打开了learned mask开关。</li>
+</ul>
+<ol start="11">
+<li>颜色转换模式: 类似于训练过程中的颜色转换，你可以使用这个功能来更好地匹配新面部的肤色，更无缝地和现实的面部交换。 有8种不同的模式，按<code>C</code>切换:</li>
+</ol>
+<ul>
+<li>RCT</li>
+<li>LCT</li>
+<li>MKL</li>
+<li>MKL-M</li>
+<li>IDT</li>
+<li>IDT-M</li>
+<li>SOT-M</li>
+<li>MIX-M<br>建议自行测试来寻找最佳模式。</li>
+</ul>
+<ol start="12">
+<li>图像降级模式: 有3个设置可以用来影响原始帧的外观(不影响换脸) :<br>Denoise：降噪图像使其稍微模糊(<code>I</code> 增加效果，<code>K</code> 减少效果)<br>Bicubic：使用双三次算法模糊图像(<code>O</code> 增加效果，<code>L</code> 减少效果)<br>Color：减少颜色位深度(<code>P</code> 增加效果，<code>;</code> 减少效果)</li>
+</ol>
+<p>将所有帧修改到满意的设置之后按下<code>Shift</code>+<code>&gt;</code>，然后关闭窗口即可。</p>
+<p><img data-src="https://s2.ax1x.com/2020/02/27/3wTBmq.png" alt="3wTBmq.png"></p>
+<p style="color:gray;text-align:center">*左侧为我经过调试得出的最佳设置，仅供参考*</p>
+
+<h2 id="将帧转换为视频"><a href="#将帧转换为视频" class="headerlink" title="将帧转换为视频"></a>将帧转换为视频</h2><p>在上一步合并所有面部之后，data_dst文件夹内会出现新的文件夹merged，里面是换脸之后所有的帧图像，所以这一步我们需要将帧序列转换为视频文件。<br>8) merged to avi.bat<br>8) merged to mov lossless.bat<br>8) merged to mp4 lossless.bat<br>8) merged to mp4.bat<br>选择自己想要的视频格式即可，lossless即无损。<br><code>Bitrate of output file in MB/s</code> （输出文件比特率）<br>部分视频网站对稿件有比特率要求，例如Bilibili要求比特率不高于6000kbps即6mbps。</p>
+<p>然后就完成了！经过这些步骤你会在workspace文件夹中得到一个名为result的视频文件，请记住遵守法律法规，不要用于恶意抹黑/捏造！</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>您的支持是我创作的动力！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="https://s2.ax1x.com/2020/03/09/8pocqJ.png" alt="McGuffin WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="https://s2.ax1x.com/2020/03/09/8poyMF.png" alt="McGuffin Alipay">
+        <p>Alipay</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%A7%86%E9%A2%91/" rel="tag"># 视频</a>
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" rel="tag"># 人工智能</a>
+              <a href="/tags/%E6%8D%A2%E8%84%B8/" rel="tag"># 换脸</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/originiums/" rel="prev" title="原创MIUI主题《源石》">
+      <i class="fa fa-chevron-left"></i> 原创MIUI主题《源石》
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/my_lists_of_software/" rel="next" title="我的Windows软件清单">
+      我的Windows软件清单 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载"><span class="nav-number">1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DFL结构说明"><span class="nav-number">2.</span> <span class="nav-text">DFL结构说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正式开始"><span class="nav-number">3.</span> <span class="nav-text">正式开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#清理workspace"><span class="nav-number">3.1.</span> <span class="nav-text">清理workspace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从data-src-mp4提取帧"><span class="nav-number">3.2.</span> <span class="nav-text">从data_src.mp4提取帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切割视频（可选）"><span class="nav-number">3.3.</span> <span class="nav-text">切割视频（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从data-dst-mp4提取帧"><span class="nav-number">3.4.</span> <span class="nav-text">从data_dst.mp4提取帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从src数据提取面部"><span class="nav-number">3.5.</span> <span class="nav-text">从src数据提取面部</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看src数据面部提取结果（可选）"><span class="nav-number">3.5.1.</span> <span class="nav-text">查看src数据面部提取结果（可选）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#src数据排序（可选）"><span class="nav-number">3.5.2.</span> <span class="nav-text">src数据排序（可选）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它可选项"><span class="nav-number">3.5.3.</span> <span class="nav-text">其它可选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从dst数据提取面部"><span class="nav-number">3.6.</span> <span class="nav-text">从dst数据提取面部</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看dst数据面部提取结果（可选）"><span class="nav-number">3.6.1.</span> <span class="nav-text">查看dst数据面部提取结果（可选）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dst数据排序及其它可选项"><span class="nav-number">3.6.2.</span> <span class="nav-text">dst数据排序及其它可选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dst数据蒙版编辑（可选）"><span class="nav-number">3.6.3.</span> <span class="nav-text">dst数据蒙版编辑（可选）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练模型"><span class="nav-number">3.7.</span> <span class="nav-text">训练模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并"><span class="nav-number">3.8.</span> <span class="nav-text">合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将帧转换为视频"><span class="nav-number">3.9.</span> <span class="nav-text">将帧转换为视频</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="McGuffin"
+      src="https://s2.ax1x.com/2020/03/09/8plPfJ.jpg">
+  <p class="site-author-name" itemprop="name">McGuffin</p>
+  <div class="site-description" itemprop="description">麦高芬其实什么也不是。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/McGuffinCN" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;McGuffinCN" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:superass@126.com" title="E-Mail → mailto:superass@126.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/SuperBillyWong" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;SuperBillyWong" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/McGuffinCN" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;McGuffinCN" rel="noopener" target="_blank"><i class="fa fa-fw fa-steam"></i>Steam</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/840168" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;840168" rel="noopener" target="_blank"><i class="fa fa-fw fa-play-circle"></i>Bilibili</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/3626415060" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3626415060" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.ultrabluefire.cn/" title="https:&#x2F;&#x2F;blog.ultrabluefire.cn&#x2F;" rel="noopener" target="_blank">超威蓝火</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://aoki.store/" title="https:&#x2F;&#x2F;aoki.store&#x2F;" rel="noopener" target="_blank">青木数码</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md" title="https:&#x2F;&#x2F;github.com&#x2F;ryanhanwu&#x2F;How-To-Ask-Questions-The-Smart-Way&#x2F;blob&#x2F;master&#x2F;README-zh_CN.md" rel="noopener" target="_blank">提问的智慧</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">McGuffin</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '7mVfwAfT4lib6FDDUcUOasFk-MdYXbMMI',
+      appKey     : 'WSyHVwfnKEH75iCTtGJsOUhg',
+      placeholder: "留下您的评论",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
