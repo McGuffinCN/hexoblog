@@ -252,37 +252,36 @@
 </blockquote>
 <a id="more"></a>
 
-<h1 id="一个著名的例子"><a href="#一个著名的例子" class="headerlink" title="一个著名的例子"></a>一个著名的例子</h1><p><img data-src="https://s2.ax1x.com/2020/03/09/89lbo8.gif" alt="example"></p>
-<p><em>大概Adobe永远不会想到这个功能会成就一个Meme</em></p>
+<h1 id="一个著名的例子"><a href="#一个著名的例子" class="headerlink" title="一个著名的例子"></a>一个著名的例子</h1><p><img data-src="https://s2.ax1x.com/2020/03/09/89lbo8.gif" alt="大概Adobe永远不会想到这个功能会成就一个Meme"></p>
 <h1 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h1><ul>
 <li>Adobe Photoshop</li>
 <li>Adobe Premiere</li>
 <li>以及这个Ps脚本：<a href="https://neilblr.com/post/42948042669" target="_blank" rel="noopener">脚本主页</a> <a href="http://neilcic.com/Animated%20Content%20Aware%20Scale.zip" target="_blank" rel="noopener">脚本下载</a></li>
 </ul>
 <h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h1><p>用Ps随便打开一张图片，使用<strong>内容识别缩放工具</strong>缩小图片；</p>
-<p><a href="https://imgchr.com/i/EWiG0U" target="_blank" rel="noopener"><img data-src="https://s2.ax1x.com/2019/05/10/EWiG0U.md.png" alt="EWiG0U.md.png"></a></p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWiG0U.md.png" alt=""></p>
 <p>内容识别会保留五官的大小，缩小到50%左右就可以看出明显效果了；</p>
-<p><img data-src="https://s2.ax1x.com/2019/05/10/EWiBX6.png" alt="EWiBX6.png"></p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWiBX6.png" alt=""></p>
 <p>如果把图片拉伸回正常大小，然后一帧一帧地执行这个操作，就可以组合出一个distorted meme动图了；</p>
 <p>当然手动制作实在是费时费力，所以上面的Ps脚本就是将这个过程自动化，实现一键输出。</p>
-<h1 id="开始制作"><a href="#开始制作" class="headerlink" title="开始制作"></a>开始制作</h1><h2 id="Photoshop环节"><a href="#Photoshop环节" class="headerlink" title="Photoshop环节"></a>Photoshop环节</h2><h3 id="导入文件"><a href="#导入文件" class="headerlink" title="导入文件"></a>导入文件</h3><p>选择<code>文件&gt;导入&gt;视频帧到图层</code>导入需要处理的视频，PS限制最多500帧，建议视频长度不超过16秒；</p>
-<p><img data-src="https://s2.ax1x.com/2019/05/10/EWFpHU.png" alt="EWFpHU.png"></p>
-<h3 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h3><p>选择<code>文件&gt;脚本&gt;浏览</code>找到刚刚下载的PS脚本 <strong>Animated Content Aware Scale.jsx</strong>；</p>
-<p><img data-src="https://s2.ax1x.com/2019/05/10/EWkSxI.png" alt="EWkSxI.png"></p>
+<h1 id="开始制作"><a href="#开始制作" class="headerlink" title="开始制作"></a>开始制作</h1><h2 id="Photoshop环节"><a href="#Photoshop环节" class="headerlink" title="Photoshop环节"></a>Photoshop环节</h2><h3 id="导入文件"><a href="#导入文件" class="headerlink" title="导入文件"></a>导入文件</h3><p>选择<strong>文件&gt;导入&gt;视频帧到图层</strong>导入需要处理的视频，PS限制最多500帧，建议视频长度不超过16秒；</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWFpHU.png" alt=""></p>
+<h3 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h3><p>选择<strong>文件&gt;脚本&gt;浏览</strong>找到刚刚下载的PS脚本 <strong>Animated Content Aware Scale.jsx</strong>；</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWkSxI.png" alt=""></p>
 <h3 id="调整参数"><a href="#调整参数" class="headerlink" title="调整参数"></a>调整参数</h3><p>从上往下四条分别是：开始时高/宽、结束时高/宽，高宽越低扭曲越严重（不会影响输出内容高宽），开始到结束会平滑过渡；</p>
 <p>Algorithm：保持默认；</p>
 <p>Protect skin tones：不建议开启；</p>
 <p>Run：运行。</p>
-<p><img data-src="https://s2.ax1x.com/2019/05/10/EWkuMq.png" alt="EWkuMq.png"></p>
-<h3 id="渲染视频"><a href="#渲染视频" class="headerlink" title="渲染视频"></a>渲染视频</h3><p>选择<code>文件&gt;导出&gt;渲染视频</code>，帧速率改为原视频帧速率。</p>
-<p><img data-src="https://s2.ax1x.com/2019/05/10/EWA8nP.png" alt="EWA8nP.png"></p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWkuMq.png" alt=""></p>
+<h3 id="渲染视频"><a href="#渲染视频" class="headerlink" title="渲染视频"></a>渲染视频</h3><p>选择<strong>文件&gt;导出&gt;渲染视频</strong>，帧速率改为原视频帧速率。</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWA8nP.png" alt=""></p>
 <h2 id="Premiere环节"><a href="#Premiere环节" class="headerlink" title="Premiere环节"></a>Premiere环节</h2><p>Ps输出的视频没有声音，这时需要Premiere来制作果冻似的声音效果。</p>
-<h3 id="施加效果"><a href="#施加效果" class="headerlink" title="施加效果"></a>施加效果</h3><p>找到<code>效果&gt;音频效果&gt;Flanger</code>，双击施加到音频片段；</p>
-<p><img data-src="https://s2.ax1x.com/2019/05/10/EWED8H.png" alt="EWED8H.png"></p>
+<h3 id="施加效果"><a href="#施加效果" class="headerlink" title="施加效果"></a>施加效果</h3><p>找到<strong>效果&gt;音频效果&gt;Flanger</strong>，双击施加到音频片段；</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWED8H.png" alt=""></p>
 <h3 id="调整参数-1"><a href="#调整参数-1" class="headerlink" title="调整参数"></a>调整参数</h3><p>按下图调整，最好按自己感觉再微调一下，其中Delay决定了果冻的弹性，3~4ms即可；</p>
-<p><img data-src="https://s2.ax1x.com/2019/05/10/EWExG4.png" alt="EWExG4.png"></p>
-<h3 id="输出视频"><a href="#输出视频" class="headerlink" title="输出视频"></a>输出视频</h3><p>将处理好的视频和音频组合在一起，选择<code>文件&gt;导出&gt;媒体</code>，格式<strong>H.264</strong>（即mp4格式），大功告成。</p>
-<p><img data-src="https://s2.ax1x.com/2019/05/10/EWVYWQ.png" alt="EWVYWQ.png"></p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWExG4.png" alt=""></p>
+<h3 id="输出视频"><a href="#输出视频" class="headerlink" title="输出视频"></a>输出视频</h3><p>将处理好的视频和音频组合在一起，选择<strong>文件&gt;导出&gt;媒体</strong>，格式<strong>H.264</strong>（即mp4格式），大功告成。</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWVYWQ.png" alt=""></p>
 
     </div>
 
@@ -407,7 +406,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -420,7 +419,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
