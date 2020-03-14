@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>使用谷雨解字加密文章</title>
+    <url>/posts/guyujiezi/</url>
+    <content><![CDATA[<p>「<a href="https://guyujiezi.com/" target="_blank" rel="noopener">谷雨解字</a>」是一种基于网页字体技术对网页内容进行简单加密的工具。</p>
+<p>利用<a href="https://developer.mozilla.org/docs/Learn/CSS/Styling_text/Web_fonts" target="_blank" rel="noopener">网页字体</a>技术，我们可以用自定义字体来渲染网页中的文字。这项技术常被用于制作网页图标字体（Icon Font），比如<a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>、<a href="https://icomoon.io/" target="_blank" rel="noopener">IcoMoon</a>、<a href="https://icofont.com/" target="_blank" rel="noopener">IconFont</a>等。而「谷雨解字」利用相同的原理，将网页中的文字渲染成其他的文字的字形，以达到保密、反爬虫和防拷贝等目的。「谷雨解字」支持的字体格式有<a href="https://docs.microsoft.com/typography/truetype/" target="_blank" rel="noopener">TTF</a>/<a href="https://www.microsoft.com/typography/otspec/" target="_blank" rel="noopener">OTF</a>、<a href="https://www.w3.org/Submission/WOFF/" target="_blank" rel="noopener">WOFF</a>、<a href="https://www.w3.org/TR/WOFF2/" target="_blank" rel="noopener">WOFF2</a>和<a href="https://www.w3.org/Submission/EOT/" target="_blank" rel="noopener">EOT</a>。</p>
+<a id="more"></a>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p><img data-src="https://s2.ax1x.com/2020/03/11/8ADPOA.png" alt="谷雨解字的工作原理"><br>用户输入需要加密的明文内容，以及用于伪装、被称作「阴书」的自定义文本。「谷雨解字」会据此生成一组字体文件，其功能是将「阴书」中的文字渲染成明文的样子。而这组字体的作用就相当于密码学中的一次性密码本，称之为「字验」。只要「阴书」的长度足够，就可以显示任意的文章词句。</p>
+<p>网页中只要保存「阴书」的内容，并用「字验」的字体进行渲染，访问者就能看到原始的明文内容。而查看源代码或者复制网页内容，只能得到「阴书」的内容。</p>
+<p><img data-src="https://s2.ax1x.com/2020/03/11/8EgcR0.png" alt="可以看到html里的阴书"><br>总而言之，<strong>这个加密并不是为了骗过“人”，而是为了骗“机器”：人类可以正常阅读经过加密的文本（原文），但是机器看到的文本与人看到的文本并不相同（阴书）。</strong>因此，可以利用阴书来骗过审查机构的扫描、搜索引擎的抓取，又能防止盗版拷贝（虽然看上去复制了原文，但粘贴出来的其实是阴书）。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>由于游客字体会被不定期清除，建议注册账号后使用。访问 <a href="https://guyujiezi.com/tool" target="_blank" rel="noopener">https://guyujiezi.com/tool</a> （需要科学上网）。<br><img data-src="https://s2.ax1x.com/2020/03/11/8Egyin.png" alt="格式可以只勾选一个，推荐使用文件最小的WOFF2"><br>请注意：阴书的有效（不重复）字符数必须大于原文的长度。比如阴书「呦呦<strong>鹿鸣</strong>，<strong>食野之芩</strong>。<strong>我有嘉宾</strong>，鼓<strong>瑟</strong>鼓<strong>琴</strong>。」中，只有加粗的文字才算作有效字符，有效长度是12，能转换的原文长度不能超过12个字。输入完毕点击生成「字验」。<br><img data-src="https://s2.ax1x.com/2020/03/11/8EgrIs.png" alt=""><br>代码会直接引用谷雨解字的网络字体，但是由于谷雨解字被墙，建议将字体下载到本地，以免访客无法加载字体。<br>将字体文件放置在 <code>[你的hexo根目录]/source/fonts</code> 目录下。然后将html代码里的字体网址改为本地地址 <code>/fonts/[你的字体文件名]</code> 。<br>由于我们只勾选了woff2格式，可以把多余的代码删除掉。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css"><span class="keyword">@font-face</span> &#123;</span></span><br><span class="line">    font-family: "谷雨解字";</span><br><span class="line">    src: url("/fonts/2ZYwDE.woff2") format("woff2");</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"font-family: 谷雨解字;"</span>&gt;</span>倡导富强、民主、文明、和谐，倡导自由、平等、公正、法治，倡导爱国、敬业、诚信、友善，积极培育和践行社会主义核心价值观。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<style scoped>
+@font-face {
+    font-family: "谷雨解字";
+    src: url("/fonts/2ZYwDE.woff2") format("woff2");
+}
+</style>
+
+<blockquote>
+<p style="font-family: 谷雨解字;">倡导富强、民主、文明、和谐，倡导自由、平等、公正、法治，倡导爱国、敬业、诚信、友善，积极培育和践行社会主义核心价值观。</p>
+</blockquote>
+<p>你可以复制上面的文字，然后在别处粘贴测试效果。</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>谷雨解字</tag>
+        <tag>反和谐</tag>
+        <tag>加密</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的Windows软件清单</title>
+    <url>/posts/my_lists_of_software/</url>
+    <content><![CDATA[<p>给目前已安装的软件列个清单，以便将来重装系统或换电脑时参考。</p>
+<a id="more"></a>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><table>
+<thead>
+<tr>
+<th>软件名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://www.malwarebytes.com/adwcleaner/" target="_blank" rel="noopener">ADWCleaner</a></td>
+<td>广告清理工具，强力到可能导致QQ崩溃</td>
+</tr>
+<tr>
+<td><a href="https://crystalmark.info/en/software/crystaldiskinfo/" target="_blank" rel="noopener">CrystalDiskInfo</a></td>
+<td>查看硬盘健康信息</td>
+</tr>
+<tr>
+<td><a href="https://www.voidtools.com" target="_blank" rel="noopener">Everything</a></td>
+<td>最好最快的Windows文件搜索工具</td>
+</tr>
+<tr>
+<td><a href="https://facerig.com" target="_blank" rel="noopener">FaceRig</a></td>
+<td>迫真虚拟主播</td>
+</tr>
+<tr>
+<td><a href="https://nikkhokkho.sourceforge.io/static.php?page=FileOptimizer" target="_blank" rel="noopener">FileOptimizer</a></td>
+<td>文件瘦身，支持多种格式</td>
+</tr>
+<tr>
+<td><a href="https://ohsoft.net/eng/ocam/intro.php?cate=1002" target="_blank" rel="noopener">oCam</a></td>
+<td>录屏软件，可以直接录制为Gif，缺点是每次关闭会弹出网页</td>
+</tr>
+<tr>
+<td><a href="https://poedit.net/" target="_blank" rel="noopener">Poedit</a></td>
+<td>用于WordPress主题或插件的翻译</td>
+</tr>
+<tr>
+<td><a href="https://potplayer.daum.net/" target="_blank" rel="noopener">PotPlayer</a></td>
+<td>最强播放器</td>
+</tr>
+<tr>
+<td>Process Viewer</td>
+<td>定位屏幕上窗口的进程，比如弹窗广告</td>
+</tr>
+<tr>
+<td><a href="https://www.sandboxie.com/" target="_blank" rel="noopener">Sandboxie</a></td>
+<td>沙盒，让软件在隔离环境运行</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Genymobile/scrcpy" target="_blank" rel="noopener">Scrcpy</a></td>
+<td>简易的手机投影到电脑软件，无需Root</td>
+</tr>
+<tr>
+<td><a href="https://www.svp-team.com/zh/home/" target="_blank" rel="noopener">SmoothVideo Project</a></td>
+<td>视频自动补帧工具，经常出现音画不同步</td>
+</tr>
+<tr>
+<td><a href="https://www.sublimetext.com/" target="_blank" rel="noopener">Sublime Text</a></td>
+<td>用于代码、标记和散文的精致文本编辑器</td>
+</tr>
+<tr>
+<td><a href="https://www.ultraedit.com/" target="_blank" rel="noopener">UltraEdit</a></td>
+<td>又一款文本编辑器，界面比较粗犷</td>
+</tr>
+<tr>
+<td><a href="https://www.ultraiso.com/" target="_blank" rel="noopener">UltraISO</a></td>
+<td>虚拟光驱</td>
+</tr>
+<tr>
+<td><a href="https://www.winamp.com/" target="_blank" rel="noopener">Winamp</a></td>
+<td>鬼知道我为什么还在用这个老古董</td>
+</tr>
+<tr>
+<td><a href="http://www.pcfreetime.com/?language=zh" target="_blank" rel="noopener">FormatFactory</a></td>
+<td>大名鼎鼎的格式工厂</td>
+</tr>
+</tbody></table>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><table>
+<thead>
+<tr>
+<th>软件名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://aria2.github.io/" target="_blank" rel="noopener">Aria2</a></td>
+<td>轻量级的多协议和多源命令行下载程序，<a href="http://aria2c.com/" target="_blank" rel="noopener">Web端控制台</a></td>
+</tr>
+<tr>
+<td>BrookTools</td>
+<td>伟大的doubi站长写的Brook客户端，让我们缅怀他</td>
+</tr>
+<tr>
+<td><a href="https://www.emule-project.net/" target="_blank" rel="noopener">eMule</a></td>
+<td>电驴</td>
+</tr>
+<tr>
+<td><a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener">Fiddler</a></td>
+<td>HTTP调试抓包工具，记录并检查所有电脑和互联网之间的HTTP通讯</td>
+</tr>
+<tr>
+<td><a href="https://www.flashfxp.com/" target="_blank" rel="noopener">FlashFXP</a></td>
+<td>FTP工具，用于与服务器交换文件</td>
+</tr>
+<tr>
+<td><a href="http://client.jijidown.com/index.html" target="_blank" rel="noopener">JiJiDown</a></td>
+<td>下载批哩批哩的视频和音频</td>
+</tr>
+<tr>
+<td><a href="https://pandownload.com/" target="_blank" rel="noopener">PanDownload</a></td>
+<td>百度网盘下载工具，不好使了</td>
+</tr>
+<tr>
+<td><a href="https://github.com/txperl/PixivBiu" target="_blank" rel="noopener">PixivBiu</a></td>
+<td>通过爬虫自动按收藏数排名Pixiv搜索结果</td>
+</tr>
+<tr>
+<td><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/" target="_blank" rel="noopener">PuTTY</a></td>
+<td>Telnet、SSH、rlogin、纯TCP以及串行接口连接软件</td>
+</tr>
+<tr>
+<td><a href="https://www.speedpan.com/" target="_blank" rel="noopener">SpeedPan</a></td>
+<td>速盘，Aria2封装，用于下载百度网盘文件</td>
+</tr>
+<tr>
+<td><a href="https://www.sockscap64.com/sstap-%E4%BA%AB%E5%8F%97%E6%B8%B8%E6%88%8F-%E4%BD%BF%E7%94%A8sstap/" target="_blank" rel="noopener">SSTap</a></td>
+<td>利用虚拟网卡实现的网络层代理，用来加速游戏</td>
+</tr>
+<tr>
+<td><a href="https://geti2p.net/zh/" target="_blank" rel="noopener">I2P</a></td>
+<td>Invisible Internet Project,俗称大蒜路由，改良自Tor</td>
+</tr>
+<tr>
+<td><a href="https://www.utorrent.com/" target="_blank" rel="noopener">μTorrent</a></td>
+<td>Torrent种子下载工具，可以在线播放，<a href="http://127.0.0.1:19575/gui/index.html" target="_blank" rel="noopener">Web端控制台</a></td>
+</tr>
+<tr>
+<td><a href="https://www.apachefriends.org/" target="_blank" rel="noopener">XAMPP</a></td>
+<td>建站集成软件包，用于本地建站并测试</td>
+</tr>
+<tr>
+<td>XX-Net</td>
+<td>和GoAgent一样，时代的眼泪</td>
+</tr>
+<tr>
+<td>YunDownload</td>
+<td>又一个勇于与百度网盘搏斗的勇士，可惜凉了</td>
+</tr>
+</tbody></table>
+<h1 id="创作"><a href="#创作" class="headerlink" title="创作"></a>创作</h1><table>
+<thead>
+<tr>
+<th>软件名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://musicalnexus.net/3mle-download/" target="_blank" rel="noopener">3ML Editor</a></td>
+<td>MIDI播放与制作</td>
+</tr>
+<tr>
+<td><a href="https://ephtracy.github.io/index.html?page=aerialod" target="_blank" rel="noopener">Aerialod</a></td>
+<td>简易地形生成工具，可以拖入图片自动生成地形</td>
+</tr>
+<tr>
+<td><a href="https://www.image-line.com/flstudio/" target="_blank" rel="noopener">FL Studio</a></td>
+<td>以乐段为基础的编曲软件，俗称水果（我怎么觉得是萝卜）</td>
+</tr>
+<tr>
+<td><a href="http://markdownpad.com/" target="_blank" rel="noopener">MarkdownPad</a></td>
+<td>Markdown编辑器，这篇文章就是用这个写的</td>
+</tr>
+<tr>
+<td><a href="https://www.mixmeister.com/bpm.php" target="_blank" rel="noopener">MixMeister BPM Analyzer</a></td>
+<td>自动分析音乐的BPM（每分钟节拍数）</td>
+</tr>
+<tr>
+<td><a href="https://borisfx.com/products/mocha-pro/" target="_blank" rel="noopener">Mocha Pro</a></td>
+<td>摄像机反求平面跟踪软件，记住没激活前不要使用</td>
+</tr>
+<tr>
+<td><a href="www.clip-studio.com/clip_site/promotion/ps/index">PoseStudio</a></td>
+<td>画画时用来参考人体结构</td>
+</tr>
+<tr>
+<td><a href="https://www.systemax.jp/en/sai/" target="_blank" rel="noopener">PaintTool SAI</a></td>
+<td>画画用的简易版PS</td>
+</tr>
+<tr>
+<td><a href="https://ulead-gif-animator.jaleco.com/" target="_blank" rel="noopener">Ulead GIF Animator</a></td>
+<td>Gif动图编辑工具</td>
+</tr>
+<tr>
+<td><a href="https://www.waves.com/" target="_blank" rel="noopener">Waves</a></td>
+<td>行业标杆混音效果器，虽然我只拿来做鬼畜</td>
+</tr>
+</tbody></table>
+<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><table>
+<thead>
+<tr>
+<th>软件名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://www.autodesk.com/products/autocad/overview" target="_blank" rel="noopener">AutoCAD</a></td>
+<td>傻逼软件</td>
+</tr>
+<tr>
+<td><a href="http://cajviewer.cnki.net/" target="_blank" rel="noopener">CAJViewer</a></td>
+<td>知网指定CAJ阅读器</td>
+</tr>
+<tr>
+<td><a href="https://lumion.com/" target="_blank" rel="noopener">Lumion</a></td>
+<td>3D渲染工具，可以与SketchUp同步显示</td>
+</tr>
+<tr>
+<td><a href="https://www.onenote.com/" target="_blank" rel="noopener">OneNote</a></td>
+<td>微软的笔记工具</td>
+</tr>
+<tr>
+<td><a href="https://www.autodesk.com/products/revit/overview" target="_blank" rel="noopener">Revit</a></td>
+<td>BIM工具之一</td>
+</tr>
+<tr>
+<td><a href="https://www.sketchup.com/" target="_blank" rel="noopener">SketchUp</a></td>
+<td>艹图大湿</td>
+</tr>
+<tr>
+<td><a href="http://www.tangent.com.cn/" target="_blank" rel="noopener">天正建筑</a></td>
+<td>AutoCAD的本地化插件</td>
+</tr>
+<tr>
+<td><a href="https://www.unrealengine.com/twinmotion" target="_blank" rel="noopener">Twinmotion</a></td>
+<td>虚幻引擎3D渲染工具，简单但效果有限</td>
+</tr>
+<tr>
+<td><a href="https://www.xmind.cn/" target="_blank" rel="noopener">XMind ZEN</a></td>
+<td>思维导图生成</td>
+</tr>
+<tr>
+<td><a href="http://www.fuwo.com/" target="_blank" rel="noopener">爱福窝云设计</a></td>
+<td>室内设计并生成效果图</td>
+</tr>
+<tr>
+<td><a href="https://www.kujiale.com/" target="_blank" rel="noopener">酷家乐</a></td>
+<td>同上</td>
+</tr>
+<tr>
+<td><a href="http://www.jianbiaoku.com/content/downPC.aspx" target="_blank" rel="noopener">建标库</a></td>
+<td>建筑相关规范查询</td>
+</tr>
+</tbody></table>
+<h1 id="游戏"><a href="#游戏" class="headerlink" title="游戏"></a>游戏</h1><table>
+<thead>
+<tr>
+<th>软件名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="http://desmume.org/" target="_blank" rel="noopener">DeSmuME</a></td>
+<td>最好的NDS模拟器</td>
+</tr>
+<tr>
+<td><a href="http://www.fceux.com/" target="_blank" rel="noopener">FCEUX</a></td>
+<td>专业的NES/FC模拟器，可以编辑或播放TAS</td>
+</tr>
+<tr>
+<td><a href="https://repo.or.cz/w/lsnes.git" target="_blank" rel="noopener">Lsnes</a></td>
+<td>基于bsnes的SNES/SFC/GB(C)模拟器，用于TAS</td>
+</tr>
+<tr>
+<td><a href="https://www.mamedev.org/" target="_blank" rel="noopener">MAME</a></td>
+<td>街机模拟器，集成全套BIOS</td>
+</tr>
+<tr>
+<td><a href="https://www.nogba.com/" target="_blank" rel="noopener">No$GBA</a></td>
+<td>NDS/GBA模拟器</td>
+</tr>
+<tr>
+<td><a href="https://www.ppsspp.org/" target="_blank" rel="noopener">PPSSPP</a></td>
+<td>PSP模拟器</td>
+</tr>
+<tr>
+<td><a href="https://www.dogfight360.com/blog/475/" target="_blank" rel="noopener">UsbEAm Hosts Editor</a></td>
+<td>通过修改Hosts加速游戏平台</td>
+</tr>
+<tr>
+<td><a href="http://virtuanes.s1.xrea.com:8080/" target="_blank" rel="noopener">VirtuaNES</a></td>
+<td>老派NES/FC模拟器</td>
+</tr>
+<tr>
+<td><a href="https://github.com/visualboyadvance-m/visualboyadvance-m" target="_blank" rel="noopener">VisualBoyAdvance-M</a></td>
+<td>GBA模拟器</td>
+</tr>
+<tr>
+<td><a href="https://www.wemod.com/" target="_blank" rel="noopener">WeMod</a></td>
+<td>游戏作弊器集成（不要打我，这是本地游戏的）</td>
+</tr>
+<tr>
+<td><a href="http://www.winkawaks.org/" target="_blank" rel="noopener">WinKawaks</a></td>
+<td>街机模拟器，支持CPS1、CPS2和NEOGEO</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>电脑</tag>
+        <tag>软件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>人工智能换脸工具 DeepFaceLab 2.0 指南/教程</title>
+    <url>/posts/DeepFaceLab_Guide/</url>
+    <content><![CDATA[<p>本文部分机翻自 <a href="https://mrdeepfakes.com/forums/thread-guide-deepfacelab-2-0-explained-and-tutorials-recommended" target="_blank" rel="noopener">MrDeepFakes Forums</a>。<br>DeepFaceLab 2.0是一款利用机器学习在视频中换脸的开源工具。其优点是无需配置环境，对Windows任何版本0依赖，上手简单且功能强大。但是请注意，DFL 2.0仅能在Nvidia显卡上运行。</p>
+<a id="more"></a>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>DFL 2.0的GitHub页面（包含最新版本以及当前所有更新）：<a href="https://github.com/iperov/DeepFaceLab" target="_blank" rel="noopener"><strong>[GITHUB]</strong></a><br>稳定发布版本可以在这里找到：<a href="https://drive.google.com/drive/folders/17a9b9zmLdnAlItifcGSE9ixDIDAT3YxP" target="_blank" rel="noopener"><strong>[从GOOGLE DRIVE下载]</strong></a> <a href="https://rutracker.org/forum/viewtopic.php?t=5558863" target="_blank" rel="noopener"><strong>[使用TORRENT下载]</strong></a></p>
+<p>如果你没有NVIDIA的GPU，并且你的CPU无法在合理时间内训练，或者你不想使用DFL 1.0，你可以考虑试用Google云计算服务<a href="https://mrdeepfakes.com/forums/thread-guide-deepfacelab-google-colab-tutorial" target="_blank" rel="noopener">Google Colab</a>。</p>
+<hr>
+<h1 id="DFL结构说明"><a href="#DFL结构说明" class="headerlink" title="DFL结构说明"></a>DFL结构说明</h1><p>DeepFaceLab 2.0包含用于提取、训练和合并的.bat文件，这是创建deepfake的三个主要步骤，它们与两个子文件夹一起位于主文件夹中：</p>
+<ul>
+<li><code>_internal</code> （这是DFLs工作所需的所有必要文件）</li>
+<li><code>workspace</code> （这里存放模型、素材视频、Faceset和最后输出的视频）</li>
+</ul>
+<p><img data-src="https://s2.ax1x.com/2020/02/15/1zVhE4.png" alt="思维导图"></p>
+<hr>
+<h1 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h1><p>在开始之前，你需要准备<strong>源视频data_src.mp4</strong>和<strong>目标视频data_dst.mp4</strong>，并放置在workspace文件夹中。<br>部分.bat文件会提供若干选项，前面的<code>[]</code>内为默认值，即不输入任何值直接按回车则使用默认值，后面的<code>()</code>内为可供选择的选项，例如<br><code>[png] Output image format ( png/jpg ?:help ) :</code><br>不输入任何值直接按回车会使用默认值png；你可以输入<code>png</code>或者<code>jpg</code>再按回车来选择想要的格式；输入<code>?</code>（注意是半角问号）再按回车可以获得有关此选项的帮助。<br>以下步骤编号对应相应的.bat文件，请依次运行，但不是所有的步骤都有必要。</p>
+<hr>
+<h2 id="清理workspace"><a href="#清理workspace" class="headerlink" title="清理workspace"></a>清理workspace</h2><p>1) clear workspace.bat<br>如果你是第一次运行DFL，则无需进行这一步，因为workspace本来就是空的。如果你此前使用过DFL，而且想重新开始全新的训练，请运行。</p>
+<hr>
+<h2 id="从data-src-mp4提取帧"><a href="#从data-src-mp4提取帧" class="headerlink" title="从data_src.mp4提取帧"></a>从data_src.mp4提取帧</h2><p>2) extract images from video data_src.bat<br>这一步将会把data_src.mp4分解为图片序列并存储在data_src文件夹中。运行此.bat文件会提供如下选项：<br><code>Enter FPS</code><br>默认值0为使用src视频帧率，即视频每一帧都会被分解为图片并用于训练，但我们并不推荐这样做，因为数据并不是越多越好，相邻的帧区别并不大，对训练的作用非常有限，而且会极大拖慢训练速度。这里建议输入5-10之间的数字。<br><code>Output image format</code><br>选择提取的图片格式，JPG较小而且通常质量足够好，因此推荐使用JPG。</p>
+<hr>
+<h2 id="切割视频（可选）"><a href="#切割视频（可选）" class="headerlink" title="切割视频（可选）"></a>切割视频（可选）</h2><p>3) cut video (drop video on me).bat<br>如果你没有视频编辑软件，可以把视频拖到此处以快速切割为想要的长度。<br>会出现的选项：<br><code>From time</code> 视频开始时间；<br><code>End time</code> 视频结束时间；<br><code>Audio track</code> 音频，默认保留；<br><code>Bitrate</code> 更改视频比特率，最好保持默认值。</p>
+<hr>
+<h2 id="从data-dst-mp4提取帧"><a href="#从data-dst-mp4提取帧" class="headerlink" title="从data_dst.mp4提取帧"></a>从data_dst.mp4提取帧</h2><p>3) extract images from video data_dst FULL FPS.bat<br>同第2步，这一步将会把data_dst.mp4一帧帧分解为图片并存储在data_dst文件夹中。因为dst视频每一帧都需要被换脸，所以这里没有帧数选项。</p>
+<hr>
+<h2 id="从src数据提取面部"><a href="#从src数据提取面部" class="headerlink" title="从src数据提取面部"></a>从src数据提取面部</h2><p>有两种方法：<br>4) data_src extract faces MANUAL.bat （手动提取）<br>4) data_src extract faces S3FD.bat （使用SF3D算法自动提取，<strong>推荐</strong>）<br>可用选项：<br><code>Which GPU indexes to choose?</code><br>选择用于面部提取的GPU（或CPU），尽量使用高性能独立显卡；<br><code>Write debug images to aligned_debug</code><br>选择是否生成aligned_debug文件夹，可以选否。</p>
+<h3 id="查看src数据面部提取结果（可选）"><a href="#查看src数据面部提取结果（可选）" class="headerlink" title="查看src数据面部提取结果（可选）"></a>查看src数据面部提取结果（可选）</h3><p>4.1) data_src view aligned result.bat<br>此.bat会打开一个程序以查看src数据面部提取结果，请手动删除其中不是人脸的、方向错误的、过于模糊的、对训练没有帮助的图片。</p>
+<h3 id="src数据排序（可选）"><a href="#src数据排序（可选）" class="headerlink" title="src数据排序（可选）"></a>src数据排序（可选）</h3><p>4.2) data_src sort.bat<br>包含各种排序规则以帮助你寻找不需要的面部图片。<br>可用的选项：</p>
+<pre><code>[0] blur :模糊度
+[1] face yaw direction :面水平方向
+[2] face pitch direction :面俯仰方向
+[3] histogram similarity :直方图相似性
+[4] histogram dissimilarity :直方图差异
+[5] brightness :亮度
+[6] hue :色调
+[7] amount of black pixels :黑色像素数量
+[8] original filename :原始文件名
+[9] one face in image :同一张脸（？）
+[10] absolute pixel difference :绝对像素差
+[11] best faces :最佳面孔</code></pre><h3 id="其它可选项"><a href="#其它可选项" class="headerlink" title="其它可选项"></a>其它可选项</h3><p>4.2) data_src util add landmarks debug images.bat -在提取面部之后生成<code>aligned_debug</code>文件夹（如果你在之前的选项中忘记了）。<br>4.2) data_src util faceset enhance.bat -使用特殊的机器学习算法来提升/增强数据集中的面孔外观，如果数据集有点模糊或者你希望通过锐化使其具有更多的细节/纹理，则此算法非常有用。<br>4.2) data_src util faceset metadata restore.bat -还原面部集元数据。提取的面部图像含有对齐数据，所以如果直接编辑面部图片并保存的话会丢失这些数据，使用下面的保存元数据和这个还原元数据可以使元数据不被丢失。<br>4.2) data_src util faceset metadata save.bat -保存面部集元数据。<br>4.2) data_src util faceset pack.bat -将<code>aligned</code>文件夹中的所有面部图片打包成压缩文件。<br>4.2) data_src util faceset unpack.bat -解压上面打包的压缩文件。<br>4.2) data_src util recover original filename.bat -将面部图像的名称还原为原始顺序/文件名（排序后）。</p>
+<hr>
+<h2 id="从dst数据提取面部"><a href="#从dst数据提取面部" class="headerlink" title="从dst数据提取面部"></a>从dst数据提取面部</h2><p>5) data_dst extract faces MANUAL RE-EXTRACT DELETED ALIGNED_DEBUG.bat<br>5) data_dst extract faces MANUAL.bat<br>5) data_dst extract faces S3FD + manual fix.bat<br>5) data_dst extract faces S3FD.bat<br>一般运行第四个即可，工作方式与第四步相同。</p>
+<h3 id="查看dst数据面部提取结果（可选）"><a href="#查看dst数据面部提取结果（可选）" class="headerlink" title="查看dst数据面部提取结果（可选）"></a>查看dst数据面部提取结果（可选）</h3><p>5.1) data_dst view aligned results.bat<br>5.1) data_dst view aligned_debug results.bat<br>同4.1)</p>
+<h3 id="dst数据排序及其它可选项"><a href="#dst数据排序及其它可选项" class="headerlink" title="dst数据排序及其它可选项"></a>dst数据排序及其它可选项</h3><p>5.2) data_dst sort.bat<br>5.2) data_dst util faceset pack.bat<br>5.2) data_dst util faceset unpack.bat<br>5.2) data_dst util recover original filename.bat<br>同4.2)</p>
+<h3 id="dst数据蒙版编辑（可选）"><a href="#dst数据蒙版编辑（可选）" class="headerlink" title="dst数据蒙版编辑（可选）"></a>dst数据蒙版编辑（可选）</h3><p>5.3) data_dst mask editor.bat<br>允许您手动编辑提取面部的蒙版（这样您就可以在合并/转换后将部分面排除在外-如果面上不存在蒙版，则原始面/帧的部分将可见）。<br>此外，“蒙版编辑器”还有一个名为“Default eyebrows expand modifier”的选项-它允许您自动展开眉毛上方的蒙版，而无需手动编辑每个面部的蒙版，但它可能会导致侧面轮廓上的问题，而展开也会覆盖背景（建议仅用于正面角度和中等侧面角度）。</p>
+<hr>
+<h2 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h2><p>有两种训练模式：</p>
+<p><strong>6) train Quick96.bat</strong><br>源自SAE模型的简单模式，适合显存2-4G的低端GPU。<br>仅提供CPU/GPU的选项。</p>
+<p><strong>6) train SAEHD.bat</strong><br>高清自动编码器模式，用于具有至少6G显存的高端GPU。<br>拥有大量可定制选项：<br><code>Autobackup every N hour</code> （每N小时自动备份一次）<br>请至少每6小时备份一次。设置为0（默认值）将禁用自动备份。<br><code>Target iteration</code> （目标迭代）<br>在达到一定数量的迭代后，将自动停止训练。设置为0（默认值）则持续训练直到您手动停止它。一般效果良好的模型至少需要15万次迭代。<br><code>Flip faces randomly</code> （随机翻转面）<br>如果你的dst视频中的人露出了右脸，而你的src视频中只有左脸，请开启此功能。但是要记住，没有脸是完全对称的，如果src视频中的侧脸上有疤痕等特征，它会被一并镜像到另一边脸。默认值为n（禁用）。<br><code>Batch_size</code> （批量大小）<br>影响每次迭代时相互比较的面数。最低值是2，VRAM越高则可以设置越大的数字。作为参考，最高不超过20。<br><code>Resolution</code> （分辨率）<br>在这里设置模型分辨率，此选项在培训期间不能更改。它会影响交换面的分辨率，模型分辨率越高，学习面将越详细，但训练时间也会更久。分辨率可以从64x64增加到256x256，增量为16。<br><code>Face type</code> （面部类型）<br>此选项设置要训练的面区域，有3个选项-半面、中间半面和全面。<br><code>AE architecture</code> （AE架构）<br>此选项允许您在两种主要学习体系结构（df和liae）以及以性能为代价提供更高质量的HD版本之间进行选择。如果您有足够多的src和dst数据能使其面部朝向和表情一一对应，请选择df或dfhd；如果您的数据不足，可以使用liae或liaehd。</p>
+<p>接下来的4个选项会影响模型的学习能力，修改这些值会对学习性能和质量产生很大的影响，因此建议保留默认值。<br><code>AutoEncoder dimensions</code> （自动编码器尺寸）<br>自动编码器尺寸设置，影响模型学习面的整体能力。<br><code>Encoder dimensions</code> （编码器规模）<br>编码器规模设置，影响模型学习面的一般结构的能力。<br><code>Decoder dimensions</code> （解码器规模）<br>解码器规模设置，影响模型学习精细细节的能力。<br><code>Decoder mask dimensions</code> （解码器蒙版尺寸）<br>在启用学习蒙版的情况下进行训练时，蒙版解码器设置会影响学习蒙版的质量。不影响训练质量。</p>
+<p><code>Learn mask</code> （学习蒙版）<br>启用将生成learned mask。如果不启用此功能并在转换器中选择“learned mask”，则合并期间将默认使用dst蒙版。此功能对性能有较大影响但效果通常更好，所以最好在经过一定程度训练后启用并在5-6千次迭代后禁用（可在中途多次开关）。默认值为n（禁用）。<br><code>Place models and optimizer on GPU</code> （在GPU上放置模型和优化器）<br>启用会增加GPU负担并大大提高性能，但会导致batch size降低。如果出现OOM（内存不足）错误，则应禁用此功能。默认值为y（启用）。<br><code>Use learning rate dropout</code> （使用dropout率）<br>此功能应仅在训练结束时启用，并且如果启用了random warp of samples或者flip faces randomly功能则请勿启用此功能。它会让你在更少的迭代次数下得到更多的细节和清晰，但一般情况不会使用此功能。在模型训练完成之前启用可能会导致模型永远无法改进。默认值为n（禁用）。<br><code>Enable random warp of samples</code> （启用样本随机扭曲）<br>用于粗略学习面部特征，但无法学习细节。建议在模型仍在改善的情况下（通过查看减少的损失值和预览窗口）保持启用此功能，在几十万次迭代后你想得到更多的细节时再禁用。默认值为y（启用）。<br><code>GAN power</code> （GAN功率）<br>额外训练以获得更详细的面孔。仅当模型或多或少完成了训练（在禁用了random warp of samples之后）时才应启用此选项。建议从低值开始，然后一直到max来测试该特性是否能给出好的结果。如果结果不好，则需要禁用它并启用一段时间的random warp of samples，以便模型可以恢复。请考虑在启用此功能之前进行备份。默认值为0.0（禁用）。<br><code>&#39;True face&#39; power</code> （真实面孔权重）<br>目的是使最终面部看起来更像src面部，与GAN一样，只有当random warp of samples被禁用，并且模型或多或少经过了充分的训练后，再启用此功能。您同样应该从一个较低的值开始。如果结果不好，则需要禁用它，并启用一段时间的random warp of samples，以便模型可以恢复。请考虑在启用此功能之前进行备份。默认值为0.0（禁用）。<br><code>Face style power and Background style power</code> （面部权重与背景权重）<br>可以提高合并后的最终结果的质量和外观，但较高的值可能导致学习面看起来更像dst数据而不是src数据（嘴唇、眼睛、化妆品、肤色等）。建议开始时最多调至10，并在训练期间将其减少到1甚至0.1。此功能对性能有很大影响，并可能要求您降低batch size或禁用gpu优化器。请考虑在启用此功能之前进行备份。默认值为0.0（禁用）。<br><code>Color transfer for src faceset</code> （src面集肤色转换）<br>此功能用于将src数据的肤色与dst数据匹配，以使最终结果具有与dst数据相似的肤色/色调，并且在面部移动时不会改变肤色（如果从包含不同光照条件的不同来源获取不同的面部角度，则可能会发生这种情况）。<br><code>Enable gradient clipping</code> （启用渐变剪辑）<br>实现此功能是为了防止DFL可能发生的所谓模型折叠/损坏。它对性能的影响很小，因此如果您真的不想使用它，则必须启用自动备份，因为折叠的模型无法恢复，必须进行清理，并且从头开始训练。默认值是n（已禁用），但由于性能影响很低，防止模型崩溃可以节省大量时间，因此我建议始终在所有模型上启用它。<br><code>Enable pretraining mode</code> （启用预训练模式）<br>启用预训练过程，该过程使用随机人员面部数据集来初步训练模型，在训练到大约50k-100k次迭代后，当开始使用您要训练的src数据和dst数据时，可以恢复该模型，这节省了时间，因为您不必每次都从0开始训练。建议使用此功能对模型进行预训练，方法是使用随机人脸制作自己的src数据和dst数据。可以随时启用，但建议在开始时仅对模型进行一次pretrain（大约100-200k次迭代）。默认值为n（禁用）。</p>
+<p>训练至少15万次迭代后可以按回车结束训练。</p>
+<hr>
+<h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><p>6) train Quick96.bat<br>6) train SAEHD.bat<br>对应训练模式，上一步使用什么模式这一步就用什么模式。<br>两者都会出现以下选项：<br><code>Use interactive merger?</code> （使用交互式合并工具？）<br>默认值是 y (启用) ，强烈建议使用，因为它具有完整功能，还有一个交互式预览，更改各种选项和启用/禁用各种功能的效果将直接反映到屏幕中。<br><code>Choose one of saved models, or enter a name to create a new model.</code> （选择一个保存的模型，或者输入名字创建新模型）<br>选择刚刚训练好的模型，一般编号是0。<br><code>Choose one or several GPU idxs (separated by comma).</code> （你想使用哪个GPU或CPU进行合并？）<br>选择一个或多个GPU（用半角逗号分隔）。</p>
+<p>选择后将弹出一个命令行窗口和一个交互式预览窗口<br><img data-src="https://s2.ax1x.com/2020/02/27/3wQj1K.png" alt=""><br>命令行窗口显示的是<strong>当前帧应用的设置</strong>，在交互式预览窗口内按下 <kbd>Tab</kbd> 可以切换<strong>主界面/帮助界面</strong>（默认处于帮助界面，请手动切换回主界面）。这些设置没有标准答案，请尝试多种组合并对比效果，直到满意为止。</p>
+<ol>
+<li><p>预览窗口操作：<br>按下 <kbd><</kbd>/<kbd>></kbd> 来后退/前进一个帧；<br>按下 <kbd>Shift</kbd>+<kbd><</kbd> 返回到第一帧， <kbd>Shift</kbd>+<kbd>></kbd> 步进到最后一帧；<br>按下 <kbd>Shift</kbd>+<kbd>/</kbd> 将当前设置应用到之后所有的帧中<strong>（重要，不要傻傻地一帧帧改了）</strong>；<br>按下 <kbd>Shift</kbd>+<kbd>M</kbd> 将当前设置应用到之前所有的帧中；<br>按下 <kbd>-/_</kbd> 和 <kbd>=/+</kbd> 键以缩放预览窗口；<br>按下 <kbd>Caps Lock</kbd> 将数值增量从1改为10（举例：开启后，按下R将增加10个单位的运动模糊）。</p>
+</li>
+<li><p>主要叠加模式，按数字键切换:<br><kbd>1</kbd> original: 显示原始画面，不换脸；<br><kbd>2</kbd> overlay: 简单的学习面部直接覆盖到帧；<br><kbd>3</kbd> hist-match: 覆盖学习面部并基于histogram匹配（按 <kbd>Z</kbd> 键切换2个模式: normal和masked hist match）；<br><kbd>4</kbd> seamless: 使用 opencv poisson 无缝克隆函数将学习的面部融合到原始帧中；<br><kbd>5</kbd> seamless hist match: 结合了hist-match和seamless；<br><kbd>6</kbd> raw-rgb: 覆盖原始的学习面孔，没有任何遮蔽。<br>注意: Seamless模式可能会导致闪烁。</p>
+</li>
+<li><p>Hist-match阈值: 如果使用了hist-match或seamless hist-match叠加模式，可以按以下按键控制histogram匹配的强度：<br><kbd>Q</kbd> 增加值；<br><kbd>A</kbd> 减少值。</p>
+</li>
+<li><p>削弱蒙版: 控制蒙版的大小。<br><kbd>W</kbd> 缩小蒙版；<br><kbd>S</kbd> 放大蒙版。</p>
+</li>
+<li><p>模糊蒙版: 羽化蒙版的边缘，模糊度越高过渡越平滑：<br><kbd>E</kbd> 增加模糊度；<br><kbd>D</kbd> 减少模糊度。</p>
+</li>
+<li><p>运动模糊: 在运动比较激烈的帧增加这个值，反之减少。<br><kbd>R</kbd> 增加运动模糊；<br><kbd>F</kbd> 减少动态模糊。</p>
+</li>
+<li><p>超分辨率: 使用算法添加更多牙齿、眼睛等区域的细节。<br><kbd>T</kbd> 增强增强效应；<br><kbd>G</kbd> 降低增强效应。</p>
+</li>
+<li><p>模糊/锐化: 模糊或锐化学习的面部。<br><kbd>Y</kbd> 锐化；<br><kbd>H</kbd> 模糊；<br><kbd>N</kbd> 切换box/gaussian模式。</p>
+</li>
+<li><p>面部比例: 新面部的大小比例。<br><kbd>U</kbd> 缩小；<br><kbd>J</kbd> 放大。</p>
+</li>
+<li><p>蒙版模式: 有6种蒙版模式，按 <kbd>X</kbd> 切换:</p>
+</li>
+</ol>
+<ul>
+<li><strong>dst</strong>: 使用从目标数据提取过程中生成的地标形状派生的蒙版；</li>
+<li><strong>learned Mask</strong>: 使用在训练中习得的蒙版，如步骤6所述。 如果训练过程中Learned mask被禁用，将改用dst蒙版；</li>
+<li><strong>fan-prd</strong>: 第一种FANseg蒙版模式，它可以预测合并过程中蒙版的形状，并可以检测出障碍物（手、眼镜、其他遮住脸部的物体）。</li>
+<li><strong>fan-dst</strong>: 第二种FANseg蒙版模式，通过考虑蒙版形状的影响，预测蒙版合并过程中的蒙版形状；</li>
+<li><strong>fan-prd+fan-dst</strong>: 3rd FANseg 掩蔽方法，结合 fan-prd 和 fan-dst 方法；</li>
+<li><strong>fan-prd+fan-dst+learned</strong>: 结合fan-prd，fan-dst和learned mask的模式。<br>最快的蒙版模式是 dst，但它不能排除障碍物；learned mask在形状方面更好，但也不能排除障碍物；fan-dst比较慢，但可以排除障碍物，一般来说在大多数情况下足够好；fan-prd可能有点不可预测，所以不推荐；fan-dst+prd 并没有提升。第六个模式最好，但要求你在训练时打开了learned mask开关。</li>
+</ul>
+<ol start="11">
+<li>颜色转换模式: 类似于训练过程中的颜色转换，你可以使用这个功能来更好地匹配新面部的肤色，更无缝地和现实的面部交换。 有8种不同的模式，按 <kbd>C</kbd> 切换:</li>
+</ol>
+<ul>
+<li>RCT</li>
+<li>LCT</li>
+<li>MKL</li>
+<li>MKL-M</li>
+<li>IDT</li>
+<li>IDT-M</li>
+<li>SOT-M</li>
+<li>MIX-M<br>建议自行测试来寻找最佳模式。</li>
+</ul>
+<ol start="12">
+<li>图像降级模式: 有3个设置可以用来影响原始帧的外观(不影响换脸) :<br>Denoise：降噪图像使其稍微模糊（ <kbd>I</kbd> 增加效果，<kbd>K</kbd> 减少效果）<br>Bicubic：使用双三次算法模糊图像（ <kbd>O</kbd> 增加效果，<kbd>L</kbd> 减少效果）<br>Color：减少颜色位深度（ <kbd>P</kbd> 增加效果，<kbd>;</kbd> 减少效果）</li>
+</ol>
+<p>将所有帧修改到满意的设置之后按下 <kbd>Shift</kbd>+<kbd>></kbd> ，然后关闭窗口即可。</p>
+<p><img data-src="https://s2.ax1x.com/2020/02/27/3wTBmq.png" alt="左侧为我经过调试得出的最佳设置，仅供参考"></p>
+<h2 id="将帧转换为视频"><a href="#将帧转换为视频" class="headerlink" title="将帧转换为视频"></a>将帧转换为视频</h2><p>在上一步合并所有面部之后，data_dst文件夹内会出现新的文件夹merged，里面是换脸之后所有的帧图像，所以这一步我们需要将帧序列转换为视频文件。<br>8) merged to avi.bat<br>8) merged to mov lossless.bat<br>8) merged to mp4 lossless.bat<br>8) merged to mp4.bat<br>选择自己想要的视频格式即可，lossless即无损。<br><code>Bitrate of output file in MB/s</code> （输出文件比特率）<br>部分视频网站对稿件有比特率要求，例如Bilibili要求比特率不高于6000kbps即6mbps。</p>
+<p>然后就完成了！经过这些步骤你会在workspace文件夹中得到一个名为result的视频文件，请记住遵守法律法规，不要用于恶意抹黑/捏造！</p>
+]]></content>
+      <categories>
+        <category>创作</category>
+      </categories>
+      <tags>
+        <tag>视频</tag>
+        <tag>AI</tag>
+        <tag>人工智能</tag>
+        <tag>换脸</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>原创MIUI主题《源石》</title>
+    <url>/posts/originiums/</url>
+    <content><![CDATA[<p>第一次制作MIUI主题。仿明日方舟UI，故得名“源石”。图标适配较少，建议混搭其他主题使用。</p>
+<a id="more"></a>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><ul>
+<li>锁屏右滑进入负一屏 可以看见刻进DNA的主界面 ；</li>
+<li>设置滑动条仿舟游开包 钢链手指 ；</li>
+<li>电池图标改理智(1.1生效)；</li>
+<li>总体扁平、方正，性冷淡风格；</li>
+<li>图标适配量少，进度缓慢，效果不佳，强迫症建议混搭其他主题的图标；</li>
+<li><a class="btn" href="http://zhuti.xiaomi.com/detail/9633d1d2-4619-46fc-befe-d12febb06962" target="_blank" rel="noopener">主题地址点此处</a>
+<a class="btn" href="/originiums">更新日志与反馈</a>
+
+</li>
+</ul>
+<h1 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h1><p><img data-src="https://s2.ax1x.com/2019/07/29/e8WRBt.md.jpg" alt=""><br><img data-src="https://s2.ax1x.com/2019/07/29/e8W2nI.md.jpg" alt=""><br><img data-src="https://s2.ax1x.com/2019/07/29/e8WcjA.md.jpg" alt=""><br><img data-src="https://s2.ax1x.com/2019/07/29/e8W6cd.md.jpg" alt=""><br><img data-src="https://s2.ax1x.com/2019/07/29/e8Wy1H.md.jpg" alt=""><br><img data-src="https://s2.ax1x.com/2019/07/29/e8WhAf.md.jpg" alt=""><br><img data-src="https://s2.ax1x.com/2019/07/29/e8WWHP.md.jpg" alt=""></p>
+<h1 id="鸣谢"><a href="#鸣谢" class="headerlink" title="鸣谢"></a>鸣谢</h1><p>@情冷轻胤、@小武、@┌墨飞┐、@米兜和其他主题技术群的大佬们</p>
+]]></content>
+      <categories>
+        <category>作品</category>
+      </categories>
+      <tags>
+        <tag>小米</tag>
+        <tag>MIUI</tag>
+        <tag>主题</tag>
+        <tag>明日方舟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何查看Danbooru中被屏蔽的图片</title>
+    <url>/posts/decensooru/</url>
+    <content><![CDATA[<p>在图站Danbooru中要查看特定标签的的图片需要金会员，当然极客老司机们是不会乖乖交钱的。</p>
+<a id="more"></a>
+<h1 id="什么是Danbooru"><a href="#什么是Danbooru" class="headerlink" title="什么是Danbooru"></a>什么是Danbooru</h1><p><a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>是一个基于标签管理的二次元图像存档网站，用户可以自用上传和搜索图片，站长将源代码开源在<a href="https://github.com/r888888888/danbooru" target="_blank" rel="noopener">Github</a>上，Gelbooru、Yandere、Konachan等图站都基于此系统建立，统称为Image Boorus，不过他们之间数据并不互通。</p>
+<h1 id="为什么使用Danbooru"><a href="#为什么使用Danbooru" class="headerlink" title="为什么使用Danbooru"></a>为什么使用Danbooru</h1><p>Danbooru对图片的标签化几乎严谨到了极致，从肤色、发色、瞳色到发型、动作、出处，几乎图片上能看到的一切信息都是Danbooru的标签对象。如果SauceNao等以图搜图网站没有找出你要的结果，Danbooru是个不错的选择。</p>
+<h1 id="安装和使用"><a href="#安装和使用" class="headerlink" title="安装和使用"></a>安装和使用</h1><h2 id="安装用户脚本管理器"><a href="#安装用户脚本管理器" class="headerlink" title="安装用户脚本管理器"></a>安装用户脚本管理器</h2><p>请根据自己使用的浏览器在下列选项中选择一个安装。</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>可选的扩展</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td><a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="noopener">Tampermonkey</a> <a href="https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag" target="_blank" rel="noopener">Violentmonkey</a></td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td><a href="https://addons.mozilla.org/firefox/addon/greasemonkey/" target="_blank" rel="noopener">Greasemonkey</a> <a href="https://addons.mozilla.org/firefox/addon/tampermonkey/" target="_blank" rel="noopener">Tampermonkey</a> <a href="https://addons.mozilla.org/firefox/addon/violentmonkey/" target="_blank" rel="noopener">Violentmonkey</a></td>
+</tr>
+<tr>
+<td>Safari</td>
+<td><a href="http://tampermonkey.net/?browser=safari" target="_blank" rel="noopener">Tampermonkey</a></td>
+</tr>
+<tr>
+<td>Microsoft Edge</td>
+<td><a href="https://www.microsoft.com/store/p/tampermonkey/9nblggh5162s" target="_blank" rel="noopener">Tampermonkey</a></td>
+</tr>
+<tr>
+<td>Opera</td>
+<td><a href="https://addons.opera.com/extensions/details/tampermonkey-beta/" target="_blank" rel="noopener">Tampermonkey</a> <a href="https://addons.opera.com/extensions/details/violent-monkey/" target="_blank" rel="noopener">Violentmonkey</a></td>
+</tr>
+<tr>
+<td>其他浏览器</td>
+<td>请在各自的扩展中心内搜索</td>
+</tr>
+</tbody></table>
+<h2 id="安装油猴脚本BBB"><a href="#安装油猴脚本BBB" class="headerlink" title="安装油猴脚本BBB"></a>安装油猴脚本BBB</h2><a class="btn" href="https://greasyfork.org/zh-CN/scripts/3575-better-better-booru/" target="_blank" rel="noopener">脚本地址</a> [源码地址](https://github.com/pseudonymous/better-better-booru/)
+<p>安装完成后访问<a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>，页眉菜单会多出一项<code>BBB Settings</code>，点击并将以下设置项勾选。</p>
+<p><img data-src="https://raw.githubusercontent.com/friendlyanon/decensooru/master/img/bbb_settings.png" alt=""><br>点击<code>Save &amp; Close</code>后会显示被屏蔽的图片的<strong>占位符</strong>（显示为Hidden）。</p>
+<h2 id="安装油猴脚本decensooru"><a href="#安装油猴脚本decensooru" class="headerlink" title="安装油猴脚本decensooru"></a>安装油猴脚本decensooru</h2><p>根据浏览器版本选择其一。</p>
+<a class="btn" href="https://github.com/friendlyanon/decensooru/raw/master/decensooru_es6.user.js" target="_blank" rel="noopener">旧版浏览器(支持ECMAScript2015)</a> &nbsp;
+<a class="btn" href="https://github.com/friendlyanon/decensooru/raw/master/decensooru.user.js" target="_blank" rel="noopener">新版浏览器(支持ECMAScript2017)</a> [源码地址](https://github.com/friendlyanon/decensooru)
+
+<p>如果你不确定你的浏览器支持什么版本的ECMAScript，直接安装第一个。或者，你可以在<a href="http://kangax.github.io/compat-table/es2016plus/#test-async_functions" target="_blank" rel="noopener">这里</a>检查浏览器兼容性，如果你的浏览器得分是15/15，请安装第二个。</p>
+<p>安装完成后访问<a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>，点击右上角的<code>Click here to begin initial Decensooru setup</code>，几分钟内将自动配置完毕。</p>
+<p>现在你可以像金会员一样随意浏览Danbooru了。</p>
+<h2 id="如果你没看懂……"><a href="#如果你没看懂……" class="headerlink" title="如果你没看懂……"></a>如果你没看懂……</h2><p><a href="https://streamable.com/utqxa" target="_blank" rel="noopener">傻瓜视频教程</a></p>
+]]></content>
+      <categories>
+        <category>老司机</category>
+      </categories>
+      <tags>
+        <tag>Danbooru</tag>
+        <tag>油猴</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>支持自定义背景的百度/谷歌CSS美化样式</title>
+    <url>/posts/baidu_google_css/</url>
+    <content><![CDATA[<p>结合了<a href="https://greasyfork.org/zh-CN/scripts/14178" target="_blank" rel="noopener">AC-baidu</a>和一些自己写的CSS，外加一些去广告功能，让你的搜索引擎与众不同。</p>
+<a id="more"></a>
+
+<h1 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h1><h2 id="百度效果图"><a href="#百度效果图" class="headerlink" title="百度效果图"></a>百度效果图</h2><p><img data-src="https://s2.ax1x.com/2019/05/29/VnqeDU.png" alt=""></p>
+<h2 id="谷歌效果图"><a href="#谷歌效果图" class="headerlink" title="谷歌效果图"></a>谷歌效果图</h2><p><img data-src="https://s2.ax1x.com/2019/05/29/VnqmbF.png" alt=""></p>
+<h1 id="安装地址"><a href="#安装地址" class="headerlink" title="安装地址"></a>安装地址</h1><a class="btn" href="https://userstyles.org/styles/169531/" target="_blank" rel="noopener">百度搜索结果页美化</a>
+<a class="btn" href="https://userstyles.org/styles/171755/" target="_blank" rel="noopener">百度首页美化</a>
+<a class="btn" href="https://userstyles.org/styles/169533/" target="_blank" rel="noopener">谷歌美化</a>
+
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><div class="tabs" id="first-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#first-unique-name-1">安装为CSS样式(推荐)</a></li><li class="tab"><a href="#first-unique-name-2">安装为油猴脚本</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><p>1，安装一个CSS美化扩展，由于Stylish曾爆出窃取用户隐私，故推荐Stylus</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>可选的扩展</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td><a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne" target="_blank" rel="noopener">Stylus</a> 或 <a href="https://chrome.google.com/webstore/detail/stylish-custom-themes-for/fjnbnpbmkenffdnngjfgmeleoegfcffe" target="_blank" rel="noopener">Stylish</a></td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td><a href="https://addons.mozilla.org/zh-CN/firefox/addon/styl-us" target="_blank" rel="noopener">Stylus</a> 或 <a href="https://addons.mozilla.org/zh-CN/firefox/addon/stylish" target="_blank" rel="noopener">Stylish</a></td>
+</tr>
+<tr>
+<td>其他浏览器</td>
+<td>请在各自的扩展中心内搜索</td>
+</tr>
+</tbody></table>
+<p>2，(可选)在样式页面选择Customize Settings自定义背景图或填充颜色<br><img data-src="https://s2.ax1x.com/2019/05/13/E5MBbF.png" alt=""><br>3，Install Style 安装脚本，完成</p></div><div class="tab-pane" id="first-unique-name-2"><p>1，安装一个用户脚本管理器</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>可选的扩展</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td><a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="noopener">Tampermonkey</a> <a href="https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag" target="_blank" rel="noopener">Violentmonkey</a></td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td><a href="https://addons.mozilla.org/firefox/addon/greasemonkey/" target="_blank" rel="noopener">Greasemonkey</a> <a href="https://addons.mozilla.org/firefox/addon/tampermonkey/" target="_blank" rel="noopener">Tampermonkey</a> <a href="https://addons.mozilla.org/firefox/addon/violentmonkey/" target="_blank" rel="noopener">Violentmonkey</a></td>
+</tr>
+<tr>
+<td>Safari</td>
+<td><a href="http://tampermonkey.net/?browser=safari" target="_blank" rel="noopener">Tampermonkey</a></td>
+</tr>
+<tr>
+<td>Microsoft Edge</td>
+<td><a href="https://www.microsoft.com/store/p/tampermonkey/9nblggh5162s" target="_blank" rel="noopener">Tampermonkey</a></td>
+</tr>
+<tr>
+<td>Opera</td>
+<td><a href="https://addons.opera.com/extensions/details/tampermonkey-beta/" target="_blank" rel="noopener">Tampermonkey</a> <a href="https://addons.opera.com/extensions/details/violent-monkey/" target="_blank" rel="noopener">Violentmonkey</a></td>
+</tr>
+<tr>
+<td>其他浏览器</td>
+<td>请在各自的扩展中心内搜索</td>
+</tr>
+</tbody></table>
+<p>2，样式页面选择Install style as userscript<br><img data-src="https://s2.ax1x.com/2019/05/13/E5GmCQ.png" alt=""></p>
+<p>3，（可选）可在background属性下自定义背景图片<br><img data-src="https://s2.ax1x.com/2019/05/13/E5GlD0.png" alt=""></p></div></div></div>]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>百度</tag>
+        <tag>谷歌</tag>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何制作一个Distorted Meme</title>
+    <url>/posts/distorted_meme/</url>
+    <content><![CDATA[<blockquote>
+<p><em>“内容识别缩放是Adobe Photoshop的一种工具，被网民用于制作动画gif，使画面内容逐渐变得扭曲且诡异。”</em><br><a href="https://knowyourmeme.com/memes/content-aware-scaling" target="_blank" rel="noopener"><div style="text-align:right"><strong><em>Content Aware Scaling | Know Your Meme</em></strong></div></a></p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="一个著名的例子"><a href="#一个著名的例子" class="headerlink" title="一个著名的例子"></a>一个著名的例子</h1><p><img data-src="https://s2.ax1x.com/2020/03/09/89lbo8.gif" alt="大概Adobe永远不会想到这个功能会成就一个Meme"></p>
+<h1 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h1><ul>
+<li>Adobe Photoshop</li>
+<li>Adobe Premiere</li>
+<li>以及这个Ps脚本：<a href="https://neilblr.com/post/42948042669" target="_blank" rel="noopener">脚本主页</a> <a href="http://neilcic.com/Animated%20Content%20Aware%20Scale.zip" target="_blank" rel="noopener">脚本下载</a></li>
+</ul>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h1><p>用Ps随便打开一张图片，使用<strong>内容识别缩放工具</strong>缩小图片；</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWiG0U.md.png" alt=""></p>
+<p>内容识别会保留五官的大小，缩小到50%左右就可以看出明显效果了；</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWiBX6.png" alt=""></p>
+<p>如果把图片拉伸回正常大小，然后一帧一帧地执行这个操作，就可以组合出一个distorted meme动图了；</p>
+<p>当然手动制作实在是费时费力，所以上面的Ps脚本就是将这个过程自动化，实现一键输出。</p>
+<h1 id="开始制作"><a href="#开始制作" class="headerlink" title="开始制作"></a>开始制作</h1><h2 id="Photoshop环节"><a href="#Photoshop环节" class="headerlink" title="Photoshop环节"></a>Photoshop环节</h2><h3 id="导入文件"><a href="#导入文件" class="headerlink" title="导入文件"></a>导入文件</h3><p>选择<strong>文件&gt;导入&gt;视频帧到图层</strong>导入需要处理的视频，PS限制最多500帧，建议视频长度不超过16秒；</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWFpHU.png" alt=""></p>
+<h3 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h3><p>选择<strong>文件&gt;脚本&gt;浏览</strong>找到刚刚下载的PS脚本 <strong>Animated Content Aware Scale.jsx</strong>；</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWkSxI.png" alt=""></p>
+<h3 id="调整参数"><a href="#调整参数" class="headerlink" title="调整参数"></a>调整参数</h3><p>从上往下四条分别是：开始时高/宽、结束时高/宽，高宽越低扭曲越严重（不会影响输出内容高宽），开始到结束会平滑过渡；</p>
+<p>Algorithm：保持默认；</p>
+<p>Protect skin tones：不建议开启；</p>
+<p>Run：运行。</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWkuMq.png" alt=""></p>
+<h3 id="渲染视频"><a href="#渲染视频" class="headerlink" title="渲染视频"></a>渲染视频</h3><p>选择<strong>文件&gt;导出&gt;渲染视频</strong>，帧速率改为原视频帧速率。</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWA8nP.png" alt=""></p>
+<h2 id="Premiere环节"><a href="#Premiere环节" class="headerlink" title="Premiere环节"></a>Premiere环节</h2><p>Ps输出的视频没有声音，这时需要Premiere来制作果冻似的声音效果。</p>
+<h3 id="施加效果"><a href="#施加效果" class="headerlink" title="施加效果"></a>施加效果</h3><p>找到<strong>效果&gt;音频效果&gt;Flanger</strong>，双击施加到音频片段；</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWED8H.png" alt=""></p>
+<h3 id="调整参数-1"><a href="#调整参数-1" class="headerlink" title="调整参数"></a>调整参数</h3><p>按下图调整，最好按自己感觉再微调一下，其中Delay决定了果冻的弹性，3~4ms即可；</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWExG4.png" alt=""></p>
+<h3 id="输出视频"><a href="#输出视频" class="headerlink" title="输出视频"></a>输出视频</h3><p>将处理好的视频和音频组合在一起，选择<strong>文件&gt;导出&gt;媒体</strong>，格式<strong>H.264</strong>（即mp4格式），大功告成。</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/10/EWVYWQ.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>创作</category>
+      </categories>
+      <tags>
+        <tag>Ps</tag>
+        <tag>Pr</tag>
+        <tag>视频</tag>
+        <tag>Meme</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/posts/hello_world/</url>
+    <content><![CDATA[<p>博客第四次推翻重做，改用免费的 GitHub Pages/Coding Pages + Hexo 搭建。</p>
+<a id="more"></a>
+<p>根据访问者 IP 的不同，中国境外用户会解析到 <a href="https://github.com/McGuffinCN/hexoblog" target="_blank" rel="noopener">Github 仓库</a>，中国境内用户会解析到 <a href="https://mcguffin.coding.net/p/hexoblog/d/guff.in/git" target="_blank" rel="noopener">Coding 仓库</a>。</p>
+]]></content>
+      <categories>
+        <category>未分类</category>
+      </categories>
+  </entry>
+</search>
