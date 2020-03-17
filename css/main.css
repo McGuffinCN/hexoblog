@@ -1183,7 +1183,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #0d035b;
+  background: #9d4e40;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2426,7 +2426,8 @@ h8,
 li,
 .table-container,
 .sidebar,
-.post-meta {
+.post-meta,
+.v {
   cursor: default;
 }
 .post-body .tabs ul.nav-tabs li.tab.active {
@@ -2472,4 +2473,42 @@ body {
 .site-title {
   margin: 5px 10px;
   font-size: 1em;
+}
+.v .vlist .vcard .vhead .vnick,
+.v .vlist .vcard .vat {
+  color: #8b8b8b !important;
+}
+.v .vlist .vcard .vhead .vnick:hover,
+.v .vlist .vcard .vat:hover {
+  color: #222 !important;
+  border-bottom-color: #222;
+}
+.v .vlist .vcard .vhead .vnick::before {
+  background: #222 !important;
+}
+.v .vlist .vcard .vimg {
+  box-shadow: none;
+}
+.v .vwrap {
+  border-bottom: 1px solid #dedede !important;
+  border-radius: 0 !important;
+}
+.v .vbtn {
+  border-radius: 0 !important;
+  background-color: #222 !important;
+  border-color: #222 !important;
+  color: #fff !important;
+}
+.v .vbtn:hover {
+  border-radius: 0 !important;
+  background-color: #fff !important;
+  border-color: #222 !important;
+  color: #222 !important;
+}
+.v .vwrap .vheader .vinput:focus {
+  border-bottom-color: #222 !important;
+}
+.v .vlist .vcard .vhead .vsys {
+  border-radius: 0 !important;
+  cursor: default;
 }
