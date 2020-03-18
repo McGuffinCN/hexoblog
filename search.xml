@@ -38,6 +38,7 @@
     <url>/posts/my_lists_of_software/</url>
     <content><![CDATA[<p>给目前已安装的软件列个清单，以便将来重装系统或换电脑时参考。</p>
 <a id="more"></a>
+
 <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><table>
 <thead>
 <tr>
@@ -94,12 +95,24 @@
 <td>视频自动补帧工具，经常出现音画不同步</td>
 </tr>
 <tr>
+<td><a href="https://code.visualstudio.com/Download" target="_blank" rel="noopener">Visual Studio Code</a></td>
+<td>一款文本编辑器，强大美观</td>
+</tr>
+<tr>
 <td><a href="https://www.sublimetext.com/" target="_blank" rel="noopener">Sublime Text</a></td>
-<td>用于代码、标记和散文的精致文本编辑器</td>
+<td>又一款文本编辑器，简洁美观</td>
+</tr>
+<tr>
+<td><a href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">Notepad ++</a></td>
+<td>双一款文本编辑器，强大粗糙</td>
 </tr>
 <tr>
 <td><a href="https://www.ultraedit.com/" target="_blank" rel="noopener">UltraEdit</a></td>
-<td>又一款文本编辑器，界面比较粗犷</td>
+<td>叒一款文本编辑器，我怎么装这么多</td>
+</tr>
+<tr>
+<td><a href="https://zh-cn.emeditor.com/#download" target="_blank" rel="noopener">EmEditor</a></td>
+<td>叕一款文本编辑器，忘掉他吧</td>
 </tr>
 <tr>
 <td><a href="https://www.ultraiso.com/" target="_blank" rel="noopener">UltraISO</a></td>
