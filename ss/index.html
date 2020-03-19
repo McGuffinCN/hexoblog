@@ -5,16 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-<script>
-    (function(){
-        if(''){
-            if (prompt('请输入密码') !== ''){
-                alert('密码错误');
-                history.back();
-            }
-        }
-    })();
-</script>
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
@@ -33,15 +23,15 @@
     var CONFIG = {"hostname":"guff.in","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="下载Windows客户端： shadowsocks-4.1.9.2.zipWindows端obfs插件： obfs-local.zip iOS客户端： Potatso Lite （需要美区账户） Android客户端： shadowsocks–universal-5.0.5.apkAndroid端obfs插件： obfs-local-nightly-0.0.5.apk 使用Windows下载obf">
+  <meta name="description" content="有东西被加密了, 请输入密码查看。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="常用工具与指南">
 <meta property="og:url" content="https://guff.in/ss/index.html">
 <meta property="og:site_name" content="苏格兰高地没有狮子">
-<meta property="og:description" content="下载Windows客户端： shadowsocks-4.1.9.2.zipWindows端obfs插件： obfs-local.zip iOS客户端： Potatso Lite （需要美区账户） Android客户端： shadowsocks–universal-5.0.5.apkAndroid端obfs插件： obfs-local-nightly-0.0.5.apk 使用Windows下载obf">
+<meta property="og:description" content="有东西被加密了, 请输入密码查看。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-19T09:25:53.803Z">
-<meta property="article:modified_time" content="2020-03-19T09:25:53.803Z">
+<meta property="article:published_time" content="2020-03-19T09:35:46.859Z">
+<meta property="article:modified_time" content="2020-03-19T09:35:46.859Z">
 <meta property="article:author" content="McGuffin">
 <meta name="twitter:card" content="summary">
 
@@ -228,13 +218,15 @@
       
       
       <div class="post-body">
-          <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>Windows客户端： <a href="https://gitee.com/mcguffin/ss/raw/master/Shadowsocks-4.1.9.2.zip" target="_blank" rel="noopener">shadowsocks-4.1.9.2.zip</a><br>Windows端obfs插件： <a href="https://gitee.com/mcguffin/ss/raw/master/obfs-local.zip" target="_blank" rel="noopener">obfs-local.zip</a></p>
-<p>iOS客户端： <a href="https://apps.apple.com/us/app/potatso-lite/id1239860606" target="_blank" rel="noopener">Potatso Lite</a> （需要美区账户）</p>
-<p>Android客户端： <a href="https://gitee.com/mcguffin/ss/raw/master/shadowsocks--universal-5.0.5.apk" target="_blank" rel="noopener">shadowsocks–universal-5.0.5.apk</a><br>Android端obfs插件： <a href="https://gitee.com/mcguffin/ss/raw/master/obfs-local-nightly-0.0.5.apk" target="_blank" rel="noopener">obfs-local-nightly-0.0.5.apk</a></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>下载obfs插件解压并放到与Shadowsocks同一目录中，带有obfs的节点需要在插件程序输入<code>obfs-local</code>，插件选项输入<code>obfs=tls;obfs-host=cn.bing.com</code>（cn.bing.com可以换成国内任意网站域名）。无obfs的节点留空即可。</p>
-<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><p>带有obfs的节点需要在设置中插件一栏选择Simple obfuscation，配置里Obfuscation wrapper填入<code>tls</code>，Obfuscation hostname填入<code>cn.bing.com</code>或国内其它网站域名。</p>
-<h3 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h3><p>待补充</p>
-
+          <div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">请输入密码</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="00e9f91d6a8aa0b50ee9eb7cb95d143d8a229f5eb129fa920ac08199e05aae3a">cf4c13f12f31815c99afc98bb627b19436f6438de6e92423b28fc91a2266c19665de36163a82405d3664a58b3a23969f4188d83194567c54b45f0d67f34e83ca44318df7ec779b8801b6434eafde83ced479c0554fa84517cf36cd8c1cde09018ee4ab069627e91fa76d02a5a2ad4e2ca0c6eda9b92300164f036bdfd2995cdb03aec401a37096af05981b7ef5140dc29cc9fc68145cced8b9e3dcfceb7615a465d630be54f64686da725c217087748e3b73074431c179ca02aaf0335c4ffb03c248b9284227ad18f263538058efb07ca666eb33c855c13fff2b4ae3a6ac0b1e5dc8eea74badb81201d725c28eb910fc88e06c5161bd5ad617407c236ab019429ab496bbfabc2851e599508b58bedbc08e780d0bd2e88e51a6901f6cda6dad203d0eb6b4cfdd960ea920775521778d082bad894b14e66903820c7cf2a279aa4e1df0eabf9708f4d2c95784d102809dc64f096f897d7fc3b7cd725a22f5225af1e870202cf08ce638694c9442d721d206e52496b26442d9c6442b48096ac41630a617e9980001e86b49f9fadd068b171c804cabdd27793097f7b714b8306a5fef7cf9d2936ad8f74e017992690d986f9621cc69d32e35a07e8368ad95a01435b23ed69631244b336b96f82f0d19efe2b9fda009dcb092d21cfe6798bd8a3f4ef45d64c72af4f0d9dd9d64f8f38b1a2782945f8db236a15b8d1ba7397708a729f2727159698db184fa6de6248392a824d298fe771192dad29008b2d66662002b408af83f7715db9acbbe2e9ba51caa5f7d4a54c77b8f55d818105fa61b4a681f7e5e9720a774f78acfc9b229e72045446b5b556ff99cc987b4783eaaf4c1a9ef512a83b39cad43dde3221b05acb459b1ab29d9036c281db1aec50a81f1bdafefc6036533beeb4d4e062533e3ef11164753b3386d895de4739a1b84261e05791b433c41963e07e9194944f9b8c865a410ffb65093fe0b6c6cbfdef6a4fd2accf2af35857666ce8cc95939b78840404797c24f3b4b0917597cb22c7edd2945121ba32cdf33ef15c86418d2cccf4505e66fbaac2a09f660b1627813badbeef5d81db47546b47153f86d7fa0f1203c916441fe280ecd87f67d2a7cddcdea480de7f89fc205dc82325a61a887724c59a3171cccb62668bcc9a0cb50cc772e6ec5076595b15b795ee2d24fb61150b69ab9c67b41cfe923b3561f895308fa559de9b264caf9f7398ca18e1697ea626b248c363c665909248c290be5cad88bad71c0ea9986084d9ccd1c18d208680a3495abc81ee64f2a0529041f3161e8c3835c61fd6fdee746234ac4f93692752503c809ada776d68f77d8612d16e8fa144ff34c9db7ed935dbfb4657f8e4fc8cb260f22d21540425e7453fcccc39fe95aa4032d1c59bfa1f0771bdcf50f7b4f0888b97dd8b86014ede13dd437733310c40a8d2ccf0c5312f2202719906d1ffb663e111155fa05b7c08620766610b0df65a7669321612b12ba33747e020ecdf828ed5162c92c099d97f359a2ccb9731e841253834f0c524a81fcf5eaa58d0f1bcaa8be7e9eb99f4bcad7a43a12f4986e143caa0256d3162e7e96116b45d97a8c8103302c7b0268b3484407cc15fe06957a843cbe54ad196e5d53ade4c25bc65204135424bf0aea50991ae5cd50a7286e67ca5c4e4c226389e301ae30d9240299589f8eb32b96530113cf8e51fcf63949b3cfd175326674881d6a316bfb21b8aa2868b03f21f5b796588846a6ac6113fa0d3ed3344ea7d4c4833656cf0992d95b793014883be714dbc7b238ea6605c39683b9d805381afda6633145b65261ffaff23f51a1cd67e9168f3118d6247233a6342fa5d63d7979d8e760cbdc71db6c45e5e30add9e93295b33247183790d3a053607dbdc8c6f8c8b9a8a37d3c81a295573cf7203d77f617e1a0c7ed17ec6dad72561a9b705a46b52a3a03e9df8dff69483a93ee6b956c523d1063061d63034063c3b28b35ea907b5a077f45e69e56b62d116113013f7fc3b0fe8ef1cdb1a84c477f28028c1b12f26e2ab7025867dae182b8a333213b656ed87a87b34d677ff821c9040f399b4c99f58b48e52dbb267f70e37b881bb1e629cc902cc5a3f92c847f2405593a0e81c328422460e9c5c64a639d97a8019122a97a07d2624805dda83e209786203cae3996cc8abdfc362c9b953f411ad09137b268ea09459fa5708505a4cd1c92855fd9c0eb09039e141de57d2c063a3a0f1c6a2d6c6170f8c41ebb687f4e5d22bdb3217195c372b3aa98cffd12f140dd70f0fea4f6a9a088a6f9e38ba7a14fa7b2c617735fa5254ff70ff24f753cf1eedc510cf0bb8beb16ce1912de93c6a4db8cf6b73edb595143cceb4421fba6b5e1def6182f3cb2238d6c4cd43ba150c35c671b4</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       </div>
       
       
@@ -297,7 +289,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-number">2.1.</span> <span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android"><span class="nav-number">2.2.</span> <span class="nav-text">Android</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS"><span class="nav-number">2.3.</span> <span class="nav-text">iOS</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
