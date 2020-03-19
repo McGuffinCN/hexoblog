@@ -1183,7 +1183,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #8cffff;
+  background: #ffbe39;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2528,4 +2528,21 @@ body {
 }
 .hbe-input-container input {
   background: transparent;
+}
+.hbe-button {
+  background: #222 !important;
+  border: 1px solid #222 !important;
+  transition: all 0.3s ease;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  text-align: center !important;
+  text-indent: 0 !important;
+  font-weight: 400 !important;
+  font-family: inherit !important;
+}
+.hbe-button:hover {
+  background: #fff !important;
+  border: 1px solid #222 !important;
+  color: #222 !important;
 }
