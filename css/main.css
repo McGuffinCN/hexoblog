@@ -1183,7 +1183,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #8b5dff;
+  background: #8cffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2430,7 +2430,8 @@ li,
 .v,
 .reward-container,
 .post-tags,
-.footer {
+.footer,
+#hbePass {
   cursor: default;
 }
 .post-body .tabs ul.nav-tabs li.tab.active {
@@ -2524,4 +2525,7 @@ body {
 .reward-container button:hover {
   background: #fff;
   color: #222;
+}
+.hbe-input-container input {
+  background: transparent;
 }
