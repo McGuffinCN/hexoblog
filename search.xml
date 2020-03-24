@@ -119,12 +119,16 @@
 <td>虚拟光驱</td>
 </tr>
 <tr>
+<td><a href="http://www.emptyloop.com/unlocker/" target="_blank" rel="noopener">Unlocker</a></td>
+<td>解除文件占用并强行删除</td>
+</tr>
+<tr>
 <td><a href="https://www.winamp.com/" target="_blank" rel="noopener">Winamp</a></td>
 <td>鬼知道我为什么还在用这个老古董</td>
 </tr>
 <tr>
 <td><a href="http://www.pcfreetime.com/?language=zh" target="_blank" rel="noopener">FormatFactory</a></td>
-<td>大名鼎鼎的格式工厂</td>
+<td>老牌工具格式工厂</td>
 </tr>
 </tbody></table>
 <h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><table>
@@ -279,6 +283,10 @@
 <td>艹图大湿</td>
 </tr>
 <tr>
+<td><a href="https://www.chaosgroup.com/cn" target="_blank" rel="noopener">V-Ray for Sketchup</a></td>
+<td>SketchUp的渲染插件</td>
+</tr>
+<tr>
 <td><a href="http://www.tangent.com.cn/" target="_blank" rel="noopener">天正建筑</a></td>
 <td>AutoCAD的本地化插件</td>
 </tr>
@@ -370,8 +378,7 @@
     <url>/posts/DeepFaceLab_Guide/</url>
     <content><![CDATA[<p>本文部分机翻自 <a href="https://mrdeepfakes.com/forums/thread-guide-deepfacelab-2-0-explained-and-tutorials-recommended" target="_blank" rel="noopener">MrDeepFakes Forums</a>。<br>DeepFaceLab 2.0是一款利用机器学习在视频中换脸的开源工具。其优点是无需配置环境，对Windows任何版本0依赖，上手简单且功能强大。但是请注意，DFL 2.0仅能在Nvidia显卡上运行。</p>
 <a id="more"></a>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>DFL 2.0的GitHub页面（包含最新版本以及当前所有更新）：<a href="https://github.com/iperov/DeepFaceLab" target="_blank" rel="noopener"><strong>[GITHUB]</strong></a><br>稳定发布版本可以在这里找到：<a href="https://drive.google.com/drive/folders/17a9b9zmLdnAlItifcGSE9ixDIDAT3YxP" target="_blank" rel="noopener"><strong>[从GOOGLE DRIVE下载]</strong></a> <a href="https://rutracker.org/forum/viewtopic.php?t=5558863" target="_blank" rel="noopener"><strong>[使用TORRENT下载]</strong></a></p>
-<p>如果你没有NVIDIA的GPU，并且你的CPU无法在合理时间内训练，或者你不想使用DFL 1.0，你可以考虑试用Google云计算服务<a href="https://mrdeepfakes.com/forums/thread-guide-deepfacelab-google-colab-tutorial" target="_blank" rel="noopener">Google Colab</a>。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>DFL 2.0的GitHub页面（包含最新版本以及当前所有更新）：<a class="btn" href="<https://github.com/iperov/DeepFaceLab/>">GitHub</a><br>稳定发布版本可以在这里找到：<a class="btn" href="<https://drive.google.com/drive/folders/17a9b9zmLdnAlItifcGSE9ixDIDAT3YxP>">Google Drive</a> <a class="btn" href="<https://rutracker.org/forum/viewtopic.php?t=5558863>">Torrent</a><br>如果你没有NVIDIA的GPU，并且你的CPU无法在合理时间内训练，或者你不想使用DFL 1.0，你可以考虑试用Google云计算服务<a href="https://mrdeepfakes.com/forums/thread-guide-deepfacelab-google-colab-tutorial" target="_blank" rel="noopener">Google Colab</a>。</p>
 <hr>
 <h2 id="DFL结构说明"><a href="#DFL结构说明" class="headerlink" title="DFL结构说明"></a>DFL结构说明</h2><p>DeepFaceLab 2.0包含用于提取、训练和合并的.bat文件，这是创建deepfake的三个主要步骤，它们与两个子文件夹一起位于主文件夹中：</p>
 <ul>
@@ -550,17 +557,16 @@
 <td>请在各自的扩展中心内搜索</td>
 </tr>
 </tbody></table>
-<h3 id="安装油猴脚本BBB"><a href="#安装油猴脚本BBB" class="headerlink" title="安装油猴脚本BBB"></a>安装油猴脚本BBB</h3><a class="btn" href="https://greasyfork.org/zh-CN/scripts/3575-better-better-booru/" target="_blank" rel="noopener">脚本地址</a> [源码地址](https://github.com/pseudonymous/better-better-booru/)
+<h3 id="安装油猴脚本BBB"><a href="#安装油猴脚本BBB" class="headerlink" title="安装油猴脚本BBB"></a>安装油猴脚本BBB</h3><a class="btn" href="<https://greasyfork.org/zh-CN/scripts/3575-better-better-booru/>">安装地址</a> <a class="btn" href="<https://github.com/pseudonymous/better-better-booru/>">源码地址</a>
 <p>安装完成后访问<a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>，页眉菜单会多出一项<code>BBB Settings</code>，点击并将以下设置项勾选。</p>
-<p><img data-src="https://raw.githubusercontent.com/friendlyanon/decensooru/master/img/bbb_settings.png" alt=""><br>点击<code>Save &amp; Close</code>后会显示被屏蔽的图片的<strong>占位符</strong>（显示为Hidden）。</p>
+<p><img data-src="https://raw.githubusercontent.com/friendlyanon/decensooru/master/img/bbb_settings.png" alt="勾选四个复选框"><br>点击<code>Save &amp; Close</code>后会显示被屏蔽的图片的<strong>占位符</strong>（显示为Hidden）。</p>
 <h3 id="安装油猴脚本decensooru"><a href="#安装油猴脚本decensooru" class="headerlink" title="安装油猴脚本decensooru"></a>安装油猴脚本decensooru</h3><p>根据浏览器版本选择其一。</p>
-<a class="btn" href="https://github.com/friendlyanon/decensooru/raw/master/decensooru_es6.user.js" target="_blank" rel="noopener">旧版浏览器(支持ECMAScript2015)</a> &nbsp;
-<a class="btn" href="https://github.com/friendlyanon/decensooru/raw/master/decensooru.user.js" target="_blank" rel="noopener">新版浏览器(支持ECMAScript2017)</a> [源码地址](https://github.com/friendlyanon/decensooru)
+<a class="btn" href="<https://github.com/friendlyanon/decensooru/raw/master/decensooru_es6.user.js/>">旧版浏览器(支持ECMAScript2015)</a> <a class="btn" href="<https://github.com/friendlyanon/decensooru/raw/master/decensooru.user.js/>">新版浏览器(支持ECMAScript2017)</a> <a class="btn" href="<https://github.com/friendlyanon/decensooru/>">源码地址</a>
 
 <p>如果你不确定你的浏览器支持什么版本的ECMAScript，直接安装第一个。或者，你可以在<a href="http://kangax.github.io/compat-table/es2016plus/#test-async_functions" target="_blank" rel="noopener">这里</a>检查浏览器兼容性，如果你的浏览器得分是15/15，请安装第二个。</p>
 <p>安装完成后访问<a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>，点击右上角的<code>Click here to begin initial Decensooru setup</code>，几分钟内将自动配置完毕。</p>
 <p>现在你可以像金会员一样随意浏览Danbooru了。</p>
-<h3 id="如果你没看懂……"><a href="#如果你没看懂……" class="headerlink" title="如果你没看懂……"></a>如果你没看懂……</h3><p><a href="https://streamable.com/utqxa" target="_blank" rel="noopener">傻瓜视频教程</a></p>
+<h3 id="如果你没看懂……"><a href="#如果你没看懂……" class="headerlink" title="如果你没看懂……"></a>如果你没看懂……</h3><a class="btn" href="<https://streamable.com/utqxa>">傻瓜视频教程</a>
 ]]></content>
       <categories>
         <category>老司机</category>

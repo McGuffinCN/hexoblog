@@ -170,7 +170,7 @@ body {
 body {
   background: var(--body-bg-color);
   color: var(--text-color);
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1em;
   line-height: 2;
 }
@@ -186,7 +186,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Noto Serif SC', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -978,7 +978,7 @@ pre .javascript .function {
 }
 .site-title {
   display: inline-block;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Noto Serif SC', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   line-height: 1.5;
@@ -1183,7 +1183,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #4093d1;
+  background: #ff9a8a;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1488,7 +1488,7 @@ pre .javascript .function {
   opacity: 0.8;
 }
 .post-body {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
@@ -1790,7 +1790,7 @@ pre .javascript .function {
 }
 .posts-expand .post-meta {
   color: #999;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 0.75em;
   margin: 3px 0 60px 0;
   text-align: center;
@@ -2411,25 +2411,20 @@ embed {
   color: #fff;
   border-bottom-color: #fff;
 }
+.site-title {
+  padding-bottom: 2px;
+}
 .posts-expand .post-meta time {
   border: none;
 }
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-h7,
-h8,
-li,
-.table-container,
+.posts-expand .post-meta {
+  margin-bottom: 50px;
+}
+body,
 .sidebar,
 .post-meta,
 .v,
 .reward-container,
-.post-tags,
 .footer,
 #hbePass {
   cursor: default;
@@ -2448,13 +2443,19 @@ canvas {
   font-size: 1.15em;
 }
 body {
-  font-size: 0.92em;
+  font-size: 0.95em;
 }
 .image-caption {
-  margin: auto auto 15px !important;
+  margin: 20px auto 0 !important;
 }
 img {
   box-shadow: 0 5px 10px rgba(0,0,0,0.08);
+}
+.post-body iframe,
+.post-body img,
+.post-body video {
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 kbd {
   font-family: consolas, Menlo, monospace, "PingFang SC", "Microsoft YaHei";
@@ -2474,9 +2475,12 @@ kbd {
 body {
   background: #fcfcfc;
 }
-.site-title {
-  margin: 5px 10px;
-  font-size: 1em;
+.post-eof {
+  margin: 60px auto 60px;
+}
+.posts-expand .post-title {
+  margin: 5px 10px 20px;
+  font-weight: bold;
 }
 .v .vlist .vcard .vhead .vnick,
 .v .vlist .vcard .vat {
@@ -2545,4 +2549,11 @@ body {
   background: #fff !important;
   border: 1px solid #222 !important;
   color: #222 !important;
+}
+.btn,
+.btn + .btn {
+  margin: 0 0 15px 0;
+}
+p {
+  margin: 0 0 15px 0;
 }
