@@ -1183,7 +1183,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c6ffff;
+  background: #6a62f4;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2411,8 +2411,19 @@ embed {
   color: #fff;
   border-bottom-color: #fff;
 }
+.links-of-author a,
+.links-of-author span.exturl,
+.links-of-blogroll-item a,
+.links-of-blogroll-item span.exturl,
+.site-state-item-count,
+.site-state-item-name {
+  transition-delay: 0s;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
 .site-title {
-  padding-bottom: 2.5px;
+  padding: 5px 20px 6px;
+  font-size: 0.95em;
 }
 .posts-expand .post-meta time {
   border: none;
@@ -2444,6 +2455,10 @@ canvas {
 }
 body {
   font-size: 0.95em;
+}
+b,
+strong {
+  font-family: 'Noto Serif SC';
 }
 .image-caption {
   margin: 20px auto 0 !important;
