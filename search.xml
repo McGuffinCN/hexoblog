@@ -1,15 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PS4平台自动化工具PS4 Marco</title>
+    <url>/posts/PS4_Macro/</url>
+    <content><![CDATA[<p>最近在玩《Granblue Fantasy: Versus》，因为要获得RPG模式Hard难度通关赠送的特典码，所以被迫当一回骑空士刷图农武器。所幸RPG模式有自动战斗省去不少麻烦，不过每次结算后还是需要手动续战，所以找了个可以在PS4使用宏的工具PS4 Macro来帮我自动输入续战指令，这样就可以挂着全自动种地睡觉去了。</p>
+<a id="more"></a>
+<a class="btn" href="https://github.com/komefai/PS4Macro" target="_blank" rel="noopener">GitHub项目地址</a> <a class="btn" href="https://github.com/komefai/PS4Macro/releases" target="_blank" rel="noopener">下载地址</a>
+<p>以下使用指南大部分直接翻译自GitHub页面ReadMe。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>要使用PS4 Macro，首先要有一台可以运行<a href="https://remoteplay.dl.playstation.net/remoteplay/index.html" target="_blank" rel="noopener">PS4 Remote Play</a>的电脑。连接成功后运行PS4 Macro。</p>
+<p><img data-src="https://raw.githubusercontent.com/komefai/PS4Macro/master/_resources/Screenshot_0_5_2.png" alt="软件界面"></p>
+<p>电脑插上DS4手柄后，按下触摸板可以开始录制指令，再次按下将结束录制并自动循环播放。<br>如果你需要录制包括触摸板的指令，请将 Playback-&gt;Record On Touch 选项取消勾选，点击<code>RECORD</code>（热键Ctrl+R）然后点击<code>PLAY</code>来开始录制，再次点击<code>RECORD</code>（Ctrl+R）以结束录制。</p>
+<blockquote>
+<p>NOTE: 如果要在没有连接手柄的情况下工作，请见下面设置中的<code>EmulateController</code>选项。</p>
+</blockquote>
+<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>你需要在根目录创建一个<code>settings.xml</code>文件来写入设置项。</p>
+<table>
+<thead>
+<tr>
+<th>设置项</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AutoInject</td>
+<td>自动轮询PS4 Remote Play并在可能的情况下进行注入</td>
+<td>false</td>
+</tr>
+<tr>
+<td>BypassInjection</td>
+<td>为了调试而绕过注入</td>
+<td>false</td>
+</tr>
+<tr>
+<td>EmulateController</td>
+<td>使用模拟手柄运行（不使用手柄）</td>
+<td>false</td>
+</tr>
+<tr>
+<td>ShowConsole</td>
+<td>启动时打开调试控制台</td>
+<td>false</td>
+</tr>
+<tr>
+<td>StartupFile</td>
+<td>启动时加载的文件的绝对或相对路径（可以是xml或dll）</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<p>示例</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Settings</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">AutoInject</span>&gt;</span>true<span class="tag">&lt;/<span class="name">AutoInject</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">BypassInjection</span>&gt;</span>false<span class="tag">&lt;/<span class="name">BypassInjection</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">EmulateController</span>&gt;</span>true<span class="tag">&lt;/<span class="name">EmulateController</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ShowConsole</span>&gt;</span>true<span class="tag">&lt;/<span class="name">ShowConsole</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">StartupFile</span>&gt;</span>MyMacro.xml<span class="tag">&lt;/<span class="name">StartupFile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="重映射"><a href="#重映射" class="headerlink" title="重映射"></a>重映射</h2><p>Remapper可以将手柄按键映射到键盘，使用键盘来操作PS4游戏。</p>
+<p><img data-src="https://raw.githubusercontent.com/komefai/PS4Macro/master/_resources/Remapper.png" alt="需要注意的是这个窗口不能被关闭，否则映射失效"></p>
+<p>要添加录制好的宏，请单击<code>…</code>浏览并选择一个xml宏文件。</p>
+<p>其它高级操作就不翻译了，想深入研究的去GitHub吧。</p>
+<h2 id="替代方案"><a href="#替代方案" class="headerlink" title="替代方案"></a>替代方案</h2><p>如果你由于种种原因无法使用PS4 Macro，这里有个替代方案。那就是使用<a href="https://www.yeshen.com/" target="_blank" rel="noopener">夜神模拟器</a>运行安卓版<a href="https://remoteplay.dl.playstation.net/remoteplay/index.html" target="_blank" rel="noopener">PS4 Remote Play</a>，然后使用夜神模拟器的<strong>操作录制</strong>功能完成自动化。</p>
+<p><img data-src="https://s1.ax1x.com/2020/04/04/GwwKxO.png" alt="模拟器里只能通过网络搜索PS4"></p>
+<p>最后问一句有骑空士愿意接盘特典码吗😏便宜出<br><img data-src="https://s1.ax1x.com/2020/04/04/Gw80rq.md.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>游戏</category>
+      </categories>
+      <tags>
+        <tag>PS4</tag>
+        <tag>主机游戏</tag>
+        <tag>宏</tag>
+        <tag>自动化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用谷雨解字加密文章</title>
     <url>/posts/guyujiezi/</url>
     <content><![CDATA[<p>「<a href="https://guyujiezi.com/" target="_blank" rel="noopener">谷雨解字</a>」是一种基于网页字体技术对网页内容进行简单加密的工具。</p>
 <p>利用<a href="https://developer.mozilla.org/docs/Learn/CSS/Styling_text/Web_fonts" target="_blank" rel="noopener">网页字体</a>技术，我们可以用自定义字体来渲染网页中的文字。这项技术常被用于制作网页图标字体（Icon Font），比如<a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>、<a href="https://icomoon.io/" target="_blank" rel="noopener">IcoMoon</a>、<a href="https://icofont.com/" target="_blank" rel="noopener">IconFont</a>等。而「谷雨解字」利用相同的原理，将网页中的文字渲染成其他的文字的字形，以达到保密、反爬虫和防拷贝等目的。「谷雨解字」支持的字体格式有<a href="https://docs.microsoft.com/typography/truetype/" target="_blank" rel="noopener">TTF</a>/<a href="https://www.microsoft.com/typography/otspec/" target="_blank" rel="noopener">OTF</a>、<a href="https://www.w3.org/Submission/WOFF/" target="_blank" rel="noopener">WOFF</a>、<a href="https://www.w3.org/TR/WOFF2/" target="_blank" rel="noopener">WOFF2</a>和<a href="https://www.w3.org/Submission/EOT/" target="_blank" rel="noopener">EOT</a>。</p>
 <a id="more"></a>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><img data-src="https://s2.ax1x.com/2020/03/11/8ADPOA.png" alt="谷雨解字的工作原理"><br>用户输入需要加密的明文内容，以及用于伪装、被称作「阴书」的自定义文本。「谷雨解字」会据此生成一组字体文件，其功能是将「阴书」中的文字渲染成明文的样子。而这组字体的作用就相当于密码学中的一次性密码本，称之为「字验」。只要「阴书」的长度足够，就可以显示任意的文章词句。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><img data-src="https://s2.ax1x.com/2020/03/11/8ADPOA.png" alt="谷雨解字的工作原理"></p>
+<p>用户输入需要加密的明文内容，以及用于伪装、被称作「阴书」的自定义文本。「谷雨解字」会据此生成一组字体文件，其功能是将「阴书」中的文字渲染成明文的样子。而这组字体的作用就相当于密码学中的一次性密码本，称之为「字验」。只要「阴书」的长度足够，就可以显示任意的文章词句。</p>
 <p>网页中只要保存「阴书」的内容，并用「字验」的字体进行渲染，访问者就能看到原始的明文内容。而查看源代码或者复制网页内容，只能得到「阴书」的内容。</p>
-<p><img data-src="https://s2.ax1x.com/2020/03/11/8EgcR0.png" alt="可以看到html里的阴书"><br>总而言之，<strong>这个加密并不是为了骗过“人”，而是为了骗“机器”：人类可以正常阅读经过加密的文本（原文），但是机器看到的文本与人看到的文本并不相同（阴书）。</strong>因此，可以利用阴书来骗过审查机构的扫描、搜索引擎的抓取，又能防止盗版拷贝（虽然看上去复制了原文，但粘贴出来的其实是阴书）。</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>由于游客字体会被不定期清除，建议注册账号后使用。访问 <a href="https://guyujiezi.com/tool" target="_blank" rel="noopener">https://guyujiezi.com/tool</a> （需要科学上网）。<br><img data-src="https://s2.ax1x.com/2020/03/11/8Egyin.png" alt="格式可以只勾选一个，推荐使用文件最小的WOFF2"><br>请注意：阴书的有效（不重复）字符数必须大于原文的长度。比如阴书「呦呦<strong>鹿鸣</strong>，<strong>食野之芩</strong>。<strong>我有嘉宾</strong>，鼓<strong>瑟</strong>鼓<strong>琴</strong>。」中，只有加粗的文字才算作有效字符，有效长度是12，能转换的原文长度不能超过12个字。输入完毕点击生成「字验」。<br><img data-src="https://s2.ax1x.com/2020/03/11/8EgrIs.png" alt=""><br>代码会直接引用谷雨解字的网络字体，但是由于谷雨解字被墙，建议将字体下载到本地，以免访客无法加载字体。<br>将字体文件放置在 <code>[你的hexo根目录]/source/fonts</code> 目录下。然后将html代码里的字体网址改为本地地址 <code>/fonts/[你的字体文件名]</code> 。<br>由于我们只勾选了woff2格式，可以把多余的代码删除掉。</p>
+<p><img data-src="https://s2.ax1x.com/2020/03/11/8EgcR0.png" alt="可以看到html里的阴书"></p>
+<p>总而言之，<strong>这个加密并不是为了骗过“人”，而是为了骗“机器”：人类可以正常阅读经过加密的文本（原文），但是机器看到的文本与人看到的文本并不相同（阴书）。</strong>因此，可以利用阴书来骗过审查机构的扫描、搜索引擎的抓取，又能防止盗版拷贝（虽然看上去复制了原文，但粘贴出来的其实是阴书）。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>由于游客字体会被不定期清除，建议注册账号后使用。访问 <a href="https://guyujiezi.com/tool" target="_blank" rel="noopener">https://guyujiezi.com/tool</a> （需要科学上网）。</p>
+<p><img data-src="https://s2.ax1x.com/2020/03/11/8Egyin.png" alt="格式可以只勾选一个，推荐使用文件最小的WOFF2"></p>
+<p>请注意：阴书的有效（不重复）字符数必须大于原文的长度。比如阴书「呦呦<strong>鹿鸣</strong>，<strong>食野之芩</strong>。<strong>我有嘉宾</strong>，鼓<strong>瑟</strong>鼓<strong>琴</strong>。」中，只有加粗的文字才算作有效字符，有效长度是12，能转换的原文长度不能超过12个字。输入完毕点击生成「字验」。</p>
+<p><img data-src="https://s2.ax1x.com/2020/03/11/8EgrIs.png" alt=""></p>
+<p>代码会直接引用谷雨解字的网络字体，但是由于谷雨解字被墙，建议将字体下载到本地，以免访客无法加载字体。<br>将字体文件放置在 <code>[你的hexo根目录]/source/fonts</code> 目录下。然后将html代码里的字体网址改为本地地址 <code>/fonts/[你的字体文件名]</code> 。<br>由于我们只勾选了woff2格式，可以把多余的代码删除掉。</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css"><span class="keyword">@font-face</span> &#123;</span></span><br><span class="line">    font-family: "谷雨解字";</span><br><span class="line">    src: url("/fonts/2ZYwDE.woff2") format("woff2");</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"font-family: 谷雨解字;"</span>&gt;</span>倡导富强、民主、文明、和谐，倡导自由、平等、公正、法治，倡导爱国、敬业、诚信、友善，积极培育和践行社会主义核心价值观。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <style scoped>
@@ -434,7 +509,9 @@
 <p>训练至少15万次迭代后可以按回车结束训练。</p>
 <hr>
 <h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><p>6) train Quick96.bat<br>6) train SAEHD.bat<br>对应训练模式，上一步使用什么模式这一步就用什么模式。<br>两者都会出现以下选项：<br><code>Use interactive merger?</code> （使用交互式合并工具？）<br>默认值是 y (启用) ，强烈建议使用，因为它具有完整功能，还有一个交互式预览，更改各种选项和启用/禁用各种功能的效果将直接反映到屏幕中。<br><code>Choose one of saved models, or enter a name to create a new model.</code> （选择一个保存的模型，或者输入名字创建新模型）<br>选择刚刚训练好的模型，一般编号是0。<br><code>Choose one or several GPU idxs (separated by comma).</code> （你想使用哪个GPU或CPU进行合并？）<br>选择一个或多个GPU（用半角逗号分隔）。</p>
-<p>选择后将弹出一个命令行窗口和一个交互式预览窗口<br><img data-src="https://s2.ax1x.com/2020/02/27/3wQj1K.png" alt=""><br>命令行窗口显示的是<strong>当前帧应用的设置</strong>，在交互式预览窗口内按下 <kbd>Tab</kbd> 可以切换<strong>主界面/帮助界面</strong>（默认处于帮助界面，请手动切换回主界面）。这些设置没有标准答案，请尝试多种组合并对比效果，直到满意为止。</p>
+<p>选择后将弹出一个命令行窗口和一个交互式预览窗口</p>
+<p><img data-src="https://s2.ax1x.com/2020/02/27/3wQj1K.png" alt=""></p>
+<p>命令行窗口显示的是<strong>当前帧应用的设置</strong>，在交互式预览窗口内按下 <kbd>Tab</kbd> 可以切换<strong>主界面/帮助界面</strong>（默认处于帮助界面，请手动切换回主界面）。这些设置没有标准答案，请尝试多种组合并对比效果，直到满意为止。</p>
 <ol>
 <li><p>预览窗口操作：<br>按下 <kbd><</kbd>/<kbd>></kbd> 来后退/前进一个帧；<br>按下 <kbd>Shift</kbd>+<kbd><</kbd> 返回到第一帧， <kbd>Shift</kbd>+<kbd>></kbd> 步进到最后一帧；<br>按下 <kbd>Shift</kbd>+<kbd>/</kbd> 将当前设置应用到之后所有的帧中<strong>（重要，不要傻傻地一帧帧改了）</strong>；<br>按下 <kbd>Shift</kbd>+<kbd>M</kbd> 将当前设置应用到之前所有的帧中；<br>按下 <kbd>-/_</kbd> 和 <kbd>=/+</kbd> 键以缩放预览窗口；<br>按下 <kbd>Caps Lock</kbd> 将数值增量从1改为10（举例：开启后，按下R将增加10个单位的运动模糊）。</p>
 </li>
@@ -567,7 +644,8 @@
 </tbody></table>
 <h3 id="安装油猴脚本BBB"><a href="#安装油猴脚本BBB" class="headerlink" title="安装油猴脚本BBB"></a>安装油猴脚本BBB</h3><a class="btn" href="https://greasyfork.org/zh-CN/scripts/3575-better-better-booru/" target="_blank" rel="noopener">安装地址</a> <a class="btn" href="https://github.com/pseudonymous/better-better-booru/" target="_blank" rel="noopener">源码地址</a>
 <p>安装完成后访问<a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>，页眉菜单会多出一项<code>BBB Settings</code>，点击并将以下设置项勾选。</p>
-<p><img data-src="https://raw.githubusercontent.com/friendlyanon/decensooru/master/img/bbb_settings.png" alt="勾选四个复选框"><br>点击<code>Save &amp; Close</code>后会显示被屏蔽的图片的<strong>占位符</strong>（显示为Hidden）。</p>
+<p><img data-src="https://raw.githubusercontent.com/friendlyanon/decensooru/master/img/bbb_settings.png" alt="勾选四个复选框"></p>
+<p>点击<code>Save &amp; Close</code>后会显示被屏蔽的图片的<strong>占位符</strong>（显示为Hidden）。</p>
 <h3 id="安装油猴脚本decensooru"><a href="#安装油猴脚本decensooru" class="headerlink" title="安装油猴脚本decensooru"></a>安装油猴脚本decensooru</h3><p>根据浏览器版本选择其一。</p>
 <a class="btn" href="https://github.com/friendlyanon/decensooru/raw/master/decensooru_es6.user.js/" target="_blank" rel="noopener">旧版浏览器(支持ECMAScript2015)</a> <a class="btn" href="https://github.com/friendlyanon/decensooru/raw/master/decensooru.user.js/" target="_blank" rel="noopener">新版浏览器(支持ECMAScript2017)</a> <a class="btn" href="https://github.com/friendlyanon/decensooru/" target="_blank" rel="noopener">源码地址</a>
 
@@ -615,7 +693,9 @@
 <td>请在各自的扩展中心内搜索</td>
 </tr>
 </tbody></table>
-<p>2，(可选)在样式页面选择Customize Settings自定义背景图或填充颜色<br><img data-src="https://s2.ax1x.com/2019/05/13/E5MBbF.png" alt=""><br>3，Install Style 安装脚本，完成</p></div><div class="tab-pane" id="first-unique-name-2"><p>1，安装一个用户脚本管理器</p>
+<p>2，(可选)在样式页面选择Customize Settings自定义背景图或填充颜色</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/13/E5MBbF.png" alt=""></p>
+<p>3，Install Style 安装脚本，完成</p></div><div class="tab-pane" id="first-unique-name-2"><p>1，安装一个用户脚本管理器</p>
 <table>
 <thead>
 <tr>
@@ -648,8 +728,10 @@
 <td>请在各自的扩展中心内搜索</td>
 </tr>
 </tbody></table>
-<p>2，样式页面选择Install style as userscript<br><img data-src="https://s2.ax1x.com/2019/05/13/E5GmCQ.png" alt=""></p>
-<p>3，（可选）可在background属性下自定义背景图片<br><img data-src="https://s2.ax1x.com/2019/05/13/E5GlD0.png" alt=""></p></div></div></div>]]></content>
+<p>2，样式页面选择Install style as userscript</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/13/E5GmCQ.png" alt=""></p>
+<p>3，（可选）可在background属性下自定义背景图片</p>
+<p><img data-src="https://s2.ax1x.com/2019/05/13/E5GlD0.png" alt=""></p></div></div></div>]]></content>
       <categories>
         <category>折腾</category>
       </categories>

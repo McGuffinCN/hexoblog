@@ -1183,7 +1183,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff931f;
+  background: #ffff0b;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2446,6 +2446,8 @@ body,
 code {
   color: #fff;
   background: #444;
+  padding-bottom: 3px;
+  bottom: 3px;
 }
 canvas {
   opacity: 0.2;
@@ -2459,9 +2461,12 @@ body {
 b,
 strong {
   font-family: 'Noto Serif SC';
+  position: relative;
+  top: 0.5px;
+  font-size: 1em;
 }
 .image-caption {
-  margin: 20px auto 0 !important;
+  margin: 20px auto auto !important;
 }
 img {
   box-shadow: 0 5px 10px rgba(0,0,0,0.08);
@@ -2470,7 +2475,7 @@ img {
 .post-body img,
 .post-body video {
   margin-top: 20px;
-  margin-bottom: 0px;
+  margin-bottom: auto;
 }
 kbd {
   font-family: consolas, Menlo, monospace, "PingFang SC", "Microsoft YaHei";
@@ -2519,8 +2524,8 @@ body {
 .v .vbtn {
   border-radius: 0 !important;
   background-color: #222 !important;
-  border-color: #222 !important;
   color: #fff !important;
+  border: 2px solid #222 !important;
 }
 .v .vbtn:hover {
   border-radius: 0 !important;
@@ -2538,7 +2543,7 @@ body {
 .reward-container button {
   border-radius: 0;
   background: #222;
-  border: 1px solid #222;
+  border: 2px solid #222;
   transition: all 0.3s ease;
 }
 .reward-container button:hover {
@@ -2569,6 +2574,6 @@ body {
 .btn + .btn {
   margin: 0 0 15px 0;
 }
-p {
-  margin: 0 0 15px 0;
+blockquote {
+  color: #6a737d;
 }
