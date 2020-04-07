@@ -1183,7 +1183,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffff0b;
+  background: #ff2a70;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2462,7 +2462,7 @@ b,
 strong {
   font-family: 'Noto Serif SC';
   position: relative;
-  top: 0.5px;
+  top: 0.4px;
   font-size: 1em;
 }
 .image-caption {

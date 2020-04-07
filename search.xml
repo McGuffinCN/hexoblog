@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>PS4平台自动化工具PS4 Marco</title>
-    <url>/posts/PS4_Macro/</url>
+    <url>/posts/PS4-Macro/</url>
     <content><![CDATA[<p>最近在玩《Granblue Fantasy: Versus》，因为要获得RPG模式Hard难度通关赠送的特典码，所以被迫当一回骑空士刷图农武器。所幸RPG模式有自动战斗省去不少麻烦，不过每次结算后还是需要手动续战，所以找了个可以在PS4使用宏的工具PS4 Macro来帮我自动输入续战指令，这样就可以挂着全自动种地睡觉去了。</p>
 <a id="more"></a>
 <a class="btn" href="https://github.com/komefai/PS4Macro" target="_blank" rel="noopener">GitHub项目地址</a> <a class="btn" href="https://github.com/komefai/PS4Macro/releases" target="_blank" rel="noopener">下载地址</a>
@@ -110,7 +110,7 @@
   </entry>
   <entry>
     <title>我的Windows软件清单</title>
-    <url>/posts/my_lists_of_software/</url>
+    <url>/posts/my-lists-of-software/</url>
     <content><![CDATA[<p>给目前已安装的软件列个清单，以便将来重装系统或换电脑时参考。</p>
 <a id="more"></a>
 
@@ -399,15 +399,23 @@
 </thead>
 <tbody><tr>
 <td><a href="http://desmume.org/" target="_blank" rel="noopener">DeSmuME</a></td>
-<td>最好的NDS模拟器</td>
+<td>NDS模拟器</td>
 </tr>
 <tr>
 <td><a href="https://discordapp.com/" target="_blank" rel="noopener">Discord</a></td>
 <td>语音聊天软件，是时候跟 Skype 和 TeamSpeak 说拜拜了</td>
 </tr>
 <tr>
+<td><a href="https://cn.dolphin-emu.org" target="_blank" rel="noopener">Dolphin</a></td>
+<td>GameCube/Wii模拟器</td>
+</tr>
+<tr>
 <td><a href="http://www.fceux.com/" target="_blank" rel="noopener">FCEUX</a></td>
 <td>专业的NES/FC模拟器，可以编辑或播放TAS</td>
+</tr>
+<tr>
+<td><a href="https://gamesdb.launchbox-app.com/" target="_blank" rel="noopener">LaunchBox</a></td>
+<td>系统地整理全平台游戏收藏</td>
 </tr>
 <tr>
 <td><a href="https://repo.or.cz/w/lsnes.git" target="_blank" rel="noopener">Lsnes</a></td>
@@ -458,7 +466,7 @@
   </entry>
   <entry>
     <title>人工智能换脸工具 DeepFaceLab 2.0 指南/教程</title>
-    <url>/posts/DeepFaceLab_Guide/</url>
+    <url>/posts/DeepFaceLab-Guide/</url>
     <content><![CDATA[<p>本文部分机翻自 <a href="https://mrdeepfakes.com/forums/thread-guide-deepfacelab-2-0-explained-and-tutorials-recommended" target="_blank" rel="noopener">MrDeepFakes Forums</a>。<br>DeepFaceLab 2.0是一款利用机器学习在视频中换脸的开源工具。其优点是无需配置环境，对Windows任何版本0依赖，上手简单且功能强大。但是请注意，DFL 2.0仅能在Nvidia显卡上运行。</p>
 <a id="more"></a>
 <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>DFL 2.0的GitHub页面（包含最新版本以及当前所有更新）：<a class="btn" href="https://github.com/iperov/DeepFaceLab/" target="_blank" rel="noopener">GitHub</a><br>稳定发布版本在这里下载：<a class="btn" href="https://drive.google.com/drive/folders/17a9b9zmLdnAlItifcGSE9ixDIDAT3YxP" target="_blank" rel="noopener">Google Drive</a> <a class="btn" href="https://rutracker.org/forum/viewtopic.php?t=5558863" target="_blank" rel="noopener">Torrent</a><br>如果你没有NVIDIA的GPU，并且你的CPU无法在合理时间内训练，或者你不想使用DFL 1.0，你可以考虑试用Google云计算服务<a href="https://mrdeepfakes.com/forums/thread-guide-deepfacelab-google-colab-tutorial" target="_blank" rel="noopener">Google Colab</a>。</p>
@@ -664,7 +672,7 @@
   </entry>
   <entry>
     <title>支持自定义背景的百度/谷歌CSS美化样式</title>
-    <url>/posts/baidu_google_css/</url>
+    <url>/posts/baidu-google-css/</url>
     <content><![CDATA[<p>结合了<a href="https://greasyfork.org/zh-CN/scripts/14178" target="_blank" rel="noopener">AC-baidu</a>和一些自己写的CSS，外加一些去广告功能，让你的搜索引擎与众不同。</p>
 <a id="more"></a>
 
@@ -743,7 +751,7 @@
   </entry>
   <entry>
     <title>如何制作一个Distorted Meme</title>
-    <url>/posts/distorted_meme/</url>
+    <url>/posts/distorted-meme/</url>
     <content><![CDATA[<blockquote>
 <p><em>“内容识别缩放是Adobe Photoshop的一种工具，被网民用于制作动画gif，使画面内容逐渐变得扭曲且诡异。”</em><br><a href="https://knowyourmeme.com/memes/content-aware-scaling" target="_blank" rel="noopener"><div style="text-align:right"><strong><em>Content Aware Scaling | Know Your Meme</em></strong></div></a></p>
 </blockquote>
@@ -792,7 +800,7 @@
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/posts/hello_world/</url>
+    <url>/posts/hello-world/</url>
     <content><![CDATA[<p>博客第四次推翻重做，改用免费的 GitHub/Coding + Hexo 搭建。</p>
 <a id="more"></a>
 <p>根据访问者 IP 的不同，中国境外用户会解析到 <a href="https://github.com/McGuffinCN/hexoblog" target="_blank" rel="noopener">Github 仓库</a>，中国境内用户会解析到 <a href="https://mcguffin.coding.net/p/hexoblog/d/guff.in/git" target="_blank" rel="noopener">Coding 仓库</a>。</p>
