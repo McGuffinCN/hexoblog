@@ -163,11 +163,15 @@
 </tr>
 <tr>
 <td><a href="https://potplayer.daum.net/" target="_blank" rel="noopener">PotPlayer</a></td>
-<td>Windows最强音视频播放器</td>
+<td>本地音视频播放器</td>
 </tr>
 <tr>
 <td>Process Viewer</td>
 <td>定位屏幕上窗口的进程，比如弹窗广告</td>
+</tr>
+<tr>
+<td><a href="http://raymai97.github.io/QuickAdmin/" target="_blank" rel="noopener">QuickAdmin</a></td>
+<td>创建提权快捷方式，免去UAC弹窗</td>
 </tr>
 <tr>
 <td><a href="https://www.sandboxie.com/" target="_blank" rel="noopener">Sandboxie</a></td>
@@ -179,7 +183,11 @@
 </tr>
 <tr>
 <td><a href="https://www.svp-team.com/zh/home/" target="_blank" rel="noopener">SmoothVideo Project</a></td>
-<td>视频自动补帧工具，经常出现音画不同步</td>
+<td>视频自动补帧工具，可能因为配置过低而经常出现音画不同步</td>
+</tr>
+<tr>
+<td><a href="https://www.microsoft.com/store/productId/9PF4KZ2VN4W9" target="_blank" rel="noopener">TranslucentTB</a></td>
+<td>Windows10任务栏美化</td>
 </tr>
 <tr>
 <td><a href="https://bbbradsmith.github.io/nsfplay/" target="_blank" rel="noopener">NSFPlay</a></td>
@@ -231,7 +239,7 @@
 </tr>
 <tr>
 <td><a href="https://pandownload.com/" target="_blank" rel="noopener">PanDownload</a></td>
-<td>百度网盘下载工具，不好使了</td>
+<td>百度网盘下载工具（4.15更新，作者进局子了）</td>
 </tr>
 <tr>
 <td><a href="https://github.com/txperl/PixivBiu" target="_blank" rel="noopener">PixivBiu</a></td>
@@ -307,7 +315,7 @@
 </tr>
 <tr>
 <td><a href="https://borisfx.com/products/mocha-pro/" target="_blank" rel="noopener">Mocha Pro</a></td>
-<td>摄像机反求平面跟踪软件，记住没激活前不要使用</td>
+<td>摄像机反求平面跟踪软件，记住<strong>不要使用未激活版本</strong></td>
 </tr>
 <tr>
 <td><a href="https://ohsoft.net/eng/ocam/intro.php?cate=1002" target="_blank" rel="noopener">oCam</a></td>
