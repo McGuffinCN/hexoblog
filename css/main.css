@@ -1183,7 +1183,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #031ca6;
+  background: #e7ff46;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2468,14 +2468,12 @@ strong {
 .image-caption {
   margin: 20px auto auto !important;
 }
-img {
-  box-shadow: 0 5px 10px rgba(0,0,0,0.08);
-}
 .post-body iframe,
 .post-body img,
 .post-body video {
   margin-top: 20px;
   margin-bottom: auto;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 kbd {
   font-family: consolas, Menlo, monospace, "PingFang SC", "Microsoft YaHei";

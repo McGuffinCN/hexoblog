@@ -474,6 +474,49 @@
 <td>街机模拟器，支持CPS1、CPS2和NEOGEO</td>
 </tr>
 </tbody></table>
+<h2 id="用-Scoop-管理-Windows-软件"><a href="#用-Scoop-管理-Windows-软件" class="headerlink" title="用 Scoop 管理 Windows 软件"></a>用 Scoop 管理 Windows 软件</h2><p>参考 <a href="https://sspai.com/post/52496" target="_blank" rel="noopener">https://sspai.com/post/52496</a>, <a href="https://sspai.com/post/52710" target="_blank" rel="noopener">https://sspai.com/post/52710</a></p>
+<h3 id="安装Scoop"><a href="#安装Scoop" class="headerlink" title="安装Scoop"></a>安装Scoop</h3><p>在 PowerShell 中输入下面内容，保证允许本地脚本的执行：</p>
+<pre><code>set-executionpolicy remotesigned -scope currentuser</code></pre><p>然后执行下面的命令安装 Scoop：</p>
+<pre><code>iex (new-object net.webclient).downloadstring(&apos;https://get.scoop.sh&apos;)</code></pre><p>静待脚本执行完成就可以了，安装成功后，让我们尝试一下：</p>
+<pre><code>scoop help </code></pre><h3 id="添加Bucket"><a href="#添加Bucket" class="headerlink" title="添加Bucket"></a>添加Bucket</h3><p>需要添加 Bucket 后才能开始使用。</p>
+<pre><code>scoop bucket add &lt;bucketname&gt; //添加bucket
+scoop bucket rm &lt;bucketname&gt; //移除bucket</code></pre><p>全部Buckets列表（以…排序）：<br><a href="https://rasa.github.io/scoop-directory/by-score" target="_blank" rel="noopener">GitHub score</a> | <a href="https://rasa.github.io/scoop-directory/by-bucket" target="_blank" rel="noopener">bucket name</a> | <a href="https://rasa.github.io/scoop-directory/by-apps" target="_blank" rel="noopener">apps</a> | <a href="https://rasa.github.io/scoop-directory/by-stars" target="_blank" rel="noopener">stars</a> | <a href="https://rasa.github.io/scoop-directory/by-forks" target="_blank" rel="noopener">forks</a> | <a href="https://rasa.github.io/scoop-directory/by-date-updated" target="_blank" rel="noopener">last updated</a></p>
+<h3 id="使用Scoop"><a href="#使用Scoop" class="headerlink" title="使用Scoop"></a>使用Scoop</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>search</td>
+<td>搜索软件名</td>
+</tr>
+<tr>
+<td>install</td>
+<td>安装软件</td>
+</tr>
+<tr>
+<td>update</td>
+<td>更新软件</td>
+</tr>
+<tr>
+<td>status</td>
+<td>查看软件状态</td>
+</tr>
+<tr>
+<td>uninstall</td>
+<td>卸载软件</td>
+</tr>
+<tr>
+<td>info</td>
+<td>查看软件详情</td>
+</tr>
+<tr>
+<td>home</td>
+<td>打开软件主页</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>软件</category>
