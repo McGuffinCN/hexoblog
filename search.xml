@@ -79,7 +79,7 @@
 <p>用户输入需要加密的明文内容，以及用于伪装、被称作「阴书」的自定义文本。「谷雨解字」会据此生成一组字体文件，其功能是将「阴书」中的文字渲染成明文的样子。而这组字体的作用就相当于密码学中的一次性密码本，称之为「字验」。只要「阴书」的长度足够，就可以显示任意的文章词句。</p>
 <p>网页中只要保存「阴书」的内容，并用「字验」的字体进行渲染，访问者就能看到原始的明文内容。而查看源代码或者复制网页内容，只能得到「阴书」的内容。</p>
 <p><img data-src="https://s2.ax1x.com/2020/03/11/8EgcR0.png" alt="可以看到html里的阴书"></p>
-<p>总而言之，<strong>这个加密并不是为了骗过“人”，而是为了骗“机器”：人类可以正常阅读经过加密的文本（原文），但是机器看到的文本与人看到的文本并不相同（阴书）。</strong>因此，可以利用阴书来骗过审查机构的扫描、搜索引擎的抓取，又能防止盗版拷贝（虽然看上去复制了原文，但粘贴出来的其实是阴书）。</p>
+<p>总而言之，<strong>人类可以正常阅读经过加密的文本（原文），但是程序看到的文本与人看到的文本并不相同（阴书）。</strong>因此，可以利用阴书来骗过审查机构的扫描、搜索引擎的抓取，或者防止盗版拷贝（虽然看上去复制了原文，但粘贴出来的其实是阴书）。</p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>由于游客字体会被不定期清除，建议注册账号后使用。访问 <a href="https://guyujiezi.com/tool" target="_blank" rel="noopener">https://guyujiezi.com/tool</a> （需要科学上网）。</p>
 <p><img data-src="https://s2.ax1x.com/2020/03/11/8Egyin.png" alt="格式可以只勾选一个，推荐使用文件最小的WOFF2"></p>
 <p>请注意：阴书的有效（不重复）字符数必须大于原文的长度。比如阴书「呦呦<strong>鹿鸣</strong>，<strong>食野之芩</strong>。<strong>我有嘉宾</strong>，鼓<strong>瑟</strong>鼓<strong>琴</strong>。」中，只有加粗的文字才算作有效字符，有效长度是12，能转换的原文长度不能超过12个字。输入完毕点击生成「字验」。</p>
@@ -723,14 +723,18 @@ scoop bucket rm &lt;bucketname&gt; //移除bucket</code></pre><p>全部Buckets�
 <p><img data-src="https://s1.ax1x.com/2020/04/26/JcksHJ.png" alt="勾选四个复选框"></p>
 <p>点击<code>Save &amp; Close</code>后会显示被屏蔽的占位图片（显示为Hidden）。</p>
 <p><img data-src="https://s1.ax1x.com/2020/04/26/JckP1K.png" alt="显示为Hidden"></p>
+<blockquote>
+<p>这个BBB脚本是修改过的版本，去油猴设置里关闭自动更新，如果不小心更新了就删除BBB脚本并从上面的链接重新安装。</p>
+</blockquote>
 <h3 id="安装油猴脚本decensooru"><a href="#安装油猴脚本decensooru" class="headerlink" title="安装油猴脚本decensooru"></a>安装油猴脚本decensooru</h3><a class="btn" href="https://github.com/Darayavaush/decensooru/raw/master/decensooru.user.js/" target="_blank" rel="noopener">安装地址</a>
 
-<p>安装完成后访问<a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>，油猴提示有脚本提出跨源请求，点允许，右上角会提示正在拉取数据，几分钟内将自动配置完毕。</p>
+<p>安装完成后访问<a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>，油猴提示有脚本试图访问跨源资源，点<code>总是允许</code>，右上角会提示正在拉取数据，几分钟内将自动配置完毕。</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/05/YioGKf.md.png" alt="Tampermonkey提示界面"></p>
 <p>现在你可以像金会员一样随意浏览Danbooru了。</p>
 <p><img data-src="https://s1.ax1x.com/2020/04/26/JckrB4.png" alt="成功返回结果"></p>
 <h2 id="不工作？试试下列解决办法"><a href="#不工作？试试下列解决办法" class="headerlink" title="不工作？试试下列解决办法"></a>不工作？试试下列解决办法</h2><ul>
 <li>不推荐使用国产浏览器，如果是Chrome建议检查更新，推荐Firefox；</li>
-<li>油猴提示有脚本提出跨源请求时点允许；</li>
+<li>不小心拒绝脚本访问跨源资源？重新安装脚本，或者在油猴设置里把<code>f001.backblazeb2.com</code>添加到“XRH安全-用户域名白名单”；</li>
 <li>点击页脚的<code>Force full refresh of Decensooru</code>来强制刷新数据库（不要乱点）；</li>
 <li>试试关闭广告拦截插件；</li>
 <li>检查danbooru网址是否为https，并重新设置BBB；</li>
@@ -739,7 +743,7 @@ scoop bucket rm &lt;bucketname&gt; //移除bucket</code></pre><p>全部Buckets�
 <li>梯子挂全局，或者把<code>backblazeb2.com</code>添加进代理列表；</li>
 <li>服务器抽风，明天再试一次，或前往 <a href="https://github.com/Darayavaush/decensooru" target="_blank" rel="noopener">Github项目地址</a> 使用英语提交issue。</li>
 </ul>
-<h2 id="修改历史"><a href="#修改历史" class="headerlink" title="修改历史"></a>修改历史</h2><p>由于Danbooru在2020.03.27修改了的代码，<a href="https://github.com/friendlyanon/decensooru" target="_blank" rel="noopener">friendlyanon</a>的脚本已不再可用，改用<a href="https://github.com/Darayavaush/decensooru" target="_blank" rel="noopener">Darayavaush</a>的脚本。</p>
+<h2 id="修改历史"><a href="#修改历史" class="headerlink" title="修改历史"></a>修改历史</h2><p>由于Danbooru在2020.03.27修改了代码，<a href="https://github.com/friendlyanon/decensooru" target="_blank" rel="noopener">friendlyanon</a>的脚本已不再可用，改用<a href="https://github.com/Darayavaush/decensooru" target="_blank" rel="noopener">Darayavaush</a>的脚本。</p>
 <p>网站运营需要大量资金，希望有条件的同学还是充值支持Danbooru。</p>
 ]]></content>
       <categories>
@@ -833,7 +837,7 @@ scoop bucket rm &lt;bucketname&gt; //移除bucket</code></pre><p>全部Buckets�
     <title>如何制作一个Distorted Meme</title>
     <url>/posts/distorted-meme/</url>
     <content><![CDATA[<blockquote>
-<p><em>“内容识别缩放是Adobe Photoshop的一种工具，被网民用于制作动画gif，使画面内容逐渐变得扭曲且诡异。”</em><br><a href="https://knowyourmeme.com/memes/content-aware-scaling" target="_blank" rel="noopener"><div style="text-align:right"><strong><em>Content Aware Scaling | Know Your Meme</em></strong></div></a></p>
+<p>内容识别缩放是Adobe Photoshop的一种工具，被网民用于制作动画gif，使画面内容逐渐变得扭曲且诡异。<br><a href="https://knowyourmeme.com/memes/content-aware-scaling" target="_blank" rel="noopener"><strong><em>Content Aware Scaling | Know Your Meme</em></strong></a></p>
 </blockquote>
 <a id="more"></a>
 
