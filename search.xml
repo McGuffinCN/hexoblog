@@ -725,9 +725,20 @@ scoop bucket rm &lt;bucketname&gt; //移除bucket</code></pre><p>全部Buckets�
 <p><img data-src="https://s1.ax1x.com/2020/04/26/JckP1K.png" alt="显示为Hidden"></p>
 <h3 id="安装油猴脚本decensooru"><a href="#安装油猴脚本decensooru" class="headerlink" title="安装油猴脚本decensooru"></a>安装油猴脚本decensooru</h3><a class="btn" href="https://github.com/Darayavaush/decensooru/raw/master/decensooru.user.js/" target="_blank" rel="noopener">安装地址</a>
 
-<p>安装完成后访问<a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>，右上角会提示正在拉取数据，几分钟内将自动配置完毕。</p>
+<p>安装完成后访问<a href="https://danbooru.donmai.us/" target="_blank" rel="noopener">Danbooru</a>，油猴提示有脚本提出跨源请求，点允许，右上角会提示正在拉取数据，几分钟内将自动配置完毕。</p>
 <p>现在你可以像金会员一样随意浏览Danbooru了。</p>
 <p><img data-src="https://s1.ax1x.com/2020/04/26/JckrB4.png" alt="成功返回结果"></p>
+<h2 id="不工作？试试下列解决办法"><a href="#不工作？试试下列解决办法" class="headerlink" title="不工作？试试下列解决办法"></a>不工作？试试下列解决办法</h2><ul>
+<li>不推荐使用国产浏览器，如果是Chrome建议检查更新，推荐Firefox；</li>
+<li>油猴提示有脚本提出跨源请求时点允许；</li>
+<li>点击页脚的<code>Force full refresh of Decensooru</code>来强制刷新数据库（不要乱点）；</li>
+<li>试试关闭广告拦截插件；</li>
+<li>检查danbooru网址是否为https，并重新设置BBB；</li>
+<li>重新安装BBB并关闭脚本自动更新；</li>
+<li>脚本初始化时浏览器可能冻结长达30秒，请坐和放宽；</li>
+<li>梯子挂全局，或者把<code>backblazeb2.com</code>添加进代理列表；</li>
+<li>服务器抽风，明天再试一次，或前往 <a href="https://github.com/Darayavaush/decensooru" target="_blank" rel="noopener">Github项目地址</a> 使用英语提交issue。</li>
+</ul>
 <h2 id="修改历史"><a href="#修改历史" class="headerlink" title="修改历史"></a>修改历史</h2><p>由于Danbooru在2020.03.27修改了的代码，<a href="https://github.com/friendlyanon/decensooru" target="_blank" rel="noopener">friendlyanon</a>的脚本已不再可用，改用<a href="https://github.com/Darayavaush/decensooru" target="_blank" rel="noopener">Darayavaush</a>的脚本。</p>
 <p>网站运营需要大量资金，希望有条件的同学还是充值支持Danbooru。</p>
 ]]></content>
