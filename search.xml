@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用PN532破解并模拟无漏洞IC卡到手机</title>
+    <url>/posts/pn532/</url>
+    <content><![CDATA[<p>讨厌随身带门禁卡？物业肆意收取门禁卡费用？这里教你如何使用PN532模拟IC卡到手机/手环上。请在合法范围内使用。</p>
+<a id="more"></a>
+
+<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p><a href="https://www.coolapk.com/feed/17688612?shareKey=NjJkNDVhOTU3ZTk3NjIxYWYyYzE~&shareUid=1029900&shareFrom=com.coolapk.market_11.2.7" target="_blank" rel="noopener">酷安上的教程（安卓）</a>和<a href="https://post.smzdm.com/p/awx00qvk/" target="_blank" rel="noopener">张大妈上的教程（电脑）</a>适用于有漏洞卡，确保你在进行下列操作前尝试过上述方法。</p>
+<p><img data-src="https://s1.ax1x.com/2022/03/13/bqsP2D.png" alt="出现上面的情况则有可能是无漏洞卡"></p>
+<h2 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h2><p>PN532 + CH340g + UID白卡 + OTG线</p>
+<h2 id="开始解密"><a href="#开始解密" class="headerlink" title="开始解密"></a>开始解密</h2><p>无漏洞卡，无论是电脑端的<a href="https://github.com/xcicode/MifareOneTool" target="_blank" rel="noopener">MifareOne Tool</a>、上位机，还是手机端的<a href="https://play.google.com/store/apps/details?id=de.syss.MifareClassicTool&hl=zh&gl=US" target="_blank" rel="noopener">MIFARE Classic Tool</a>、<a href="https://play.google.com/store/apps/details?id=com.rfidresearchgroup.rfidtools" target="_blank" rel="noopener">RFID Tools</a>都无法解密，所以这里需要使用安卓平台的NFC Reader Tool Pro跑字典。</p>
+<p>使用OTG连接PN532后点击首页“一键解码”</p>
+<p><img data-src="https://s1.ax1x.com/2022/03/13/bqbbRg.md.jpg" alt=""></p>
+<p>点击“开始执行”，此过程需要耗费较长时间，注意手机电量，如果失败尝试勾选“强制云计算”后重试。</p>
+<p><img data-src="https://s1.ax1x.com/2022/03/13/bqq6wq.md.jpg" alt=""></p>
+<p>保存并发送二进制文件（DUMP格式）到电脑，<strong>记下扇区0第一行的前8位UID卡号</strong>，接下来需要在电脑操作。</p>
+<p><img data-src="https://s1.ax1x.com/2022/03/13/bqIPRs.md.jpg" alt=""></p>
+<h2 id="模拟复制"><a href="#模拟复制" class="headerlink" title="模拟复制"></a>模拟复制</h2><p>下面的教程就跟张大妈上的相差无几了。</p>
+<p>电脑插上PN532，打开<a href="https://github.com/xcicode/MifareOneTool" target="_blank" rel="noopener">MifareOne Tool</a>。<br>把空白卡放在PN532上，切换到“高级操作模式”，点击“UID写号”，把刚刚记下的8位卡号填上去，这样就制作了一张只有卡号相同的UID卡。</p>
+<p><img data-src="https://s1.ax1x.com/2022/03/13/bqOuxe.png" alt=""></p>
+<p>然后把这张UID卡复制到手机，此时已完成了UID部分的写入，接下来需要把剩余的CUID部分写入（模拟卡可以多次写入）。<br>在手机上呼出这张卡，把手机放在PN532上。（手环同理）</p>
+<p>点击“CUID写”，选择刚刚从手机发送过来的DUMP文件。</p>
+<p><img data-src="https://s1.ax1x.com/2022/03/13/bqOn2D.png" alt=""></p>
+<p>写入成功后可以在终端看到“完成！写入了63/64个块”的字样，为什么是写入63块呢？因为之前一步已经从UID卡写入8位也就是1块数据。</p>
+<p>至此IC卡的模拟已经完成。我们对比下原卡和模拟卡的数据。</p>
+<p><img data-src="https://s1.ax1x.com/2022/03/13/bq7toT.png" alt=""></p>
+<p>可以看到扇区0依然有一部分数据不一致，这是因为此处记录的是卡片制造商信息（即厂商码），门禁系统不检测厂商信息的情况下可用，反之不可用。目前手机手环没有办法修改厂商码。</p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>破解</tag>
+        <tag>门禁卡</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PS4平台自动化工具PS4 Marco</title>
     <url>/posts/PS4-Macro/</url>
     <content><![CDATA[<p>最近在玩《Granblue Fantasy: Versus》，因为要获得RPG模式Hard难度通关赠送的特典码，所以被迫当一回骑空士刷图农武器。所幸RPG模式有自动战斗省去不少麻烦，不过每次结算后还是需要手动续战，所以找了个可以在PS4使用宏的工具PS4 Macro来帮我自动输入续战指令，这样就可以挂着全自动种地睡觉去了。</p>
@@ -888,9 +923,9 @@ scoop bucket rm &lt;bucketname&gt; //移除bucket</code></pre><p>全部Buckets�
   <entry>
     <title>Hello World</title>
     <url>/posts/hello-world/</url>
-    <content><![CDATA[<p>博客第四次推翻重做，改用免费的 GitHub/Coding + Hexo 搭建。</p>
+    <content><![CDATA[<p>博客第四次推翻重做，改用免费的 GitHub/<del>Coding</del> + Hexo 搭建。</p>
 <a id="more"></a>
-<p>根据访问者 IP 的不同，中国境外用户会解析到 <a href="https://github.com/McGuffinCN/hexoblog" target="_blank" rel="noopener">Github 仓库</a>，中国境内用户会解析到 <a href="https://mcguffin.coding.net/p/hexoblog/d/guff.in/git" target="_blank" rel="noopener">Coding 仓库</a>。</p>
+<p><del>根据访问者 IP 的不同，中国境外用户会解析到 <a href="https://github.com/McGuffinCN/hexoblog" target="_blank" rel="noopener">Github 仓库</a>，中国境内用户会解析到 <a href="https://mcguffin.coding.net/p/hexoblog/d/guff.in/git" target="_blank" rel="noopener">Coding 仓库</a>。</del><br>由于Coding政策变更而弃用，现境内外用户全部解析到Github仓库。</p>
 ]]></content>
       <categories>
         <category>未分类</category>
