@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>折腾NAS：蜗牛星际A款+黑群晖洗白</title>
+    <url>/posts/synology_NAS/</url>
+    <content><![CDATA[<p>在闲鱼捡了台三手蜗牛星际A款矿渣，记录一下折腾过程。</p>
+<a id="more"></a>
+<p>也许在2022年这台机器已经不是最具性价比的矿渣了，不过我因为懒得挑选还是入手了蜗牛星际A款。</p>
+<p><img data-src="https://s1.ax1x.com/2022/05/04/OVnuzn.jpg" alt="前防尘罩没有了，颜值差了点儿"></p>
+<p>原装电源声音太大，所以我买了个FSPATX250W电源换上，注意要买小1U的电源，主板20+4PIN接口1个、大4PIN接口1个（有的教程说要2个大4PIN接口，不过我这儿不知道什么原因只接了一个）。<br>再装上闲鱼买的500G HDD。</p>
+<img data-src="https://s1.ax1x.com/2022/05/04/OVut78.md.jpg" width=256 alt="不换电源也不是不能用" />
+<br>
+
+<p>关于蜗牛星际改造NAS的文章有很多，这里我主要参考<a href="https://post.smzdm.com/p/aqx07xmk/" target="_blank" rel="noopener">阿文菌的教程</a>。因为我这款是没有集显的J1900 CPU，这里按阿文菌推荐安装<a href="http://www2.awenj.cn:2200/index.php?dir=/var/%E9%98%BF%E6%96%87%E8%8F%8C%E8%BD%AF%E4%BB%B6%E5%AD%98%E6%A1%A3/%E9%BB%91%E7%BE%A4%E6%99%963617%206.1.7%20%E5%9B%BA%E4%BB%B6%E5%92%8C%E5%B7%A5%E5%85%B7%20-%E9%98%BF%E6%96%87%E8%8F%8C" target="_blank" rel="noopener">黑群晖3617 6.1.7版本</a>。<br>和教程不同的是，我在淘宝花20块买了个洗白码，直接把商家给的SN码和MAC码填到引导盘的gurb.cfg里就可以了，实测包括QuickConnect在内的全功能可直接使用。</p>
+<p><img data-src="https://s1.ax1x.com/2022/05/04/OVly24.png" alt="洗白方法"></p>
+<p><strong>踩到的坑</strong>：我在安装过程中，显示器连接在NAS上时，安装前后都可以在局域网搜索到IP，但是拔掉显示器后重启就搜索不到了，经排查发现是因为系统使用的引导方式是UEFI，而UEFI必须要有视频输出才能正常引导。<br><strong>解决方法</strong>：插一个HDMI欺骗器，或者换成Legacy引导，这里我换了Legacy引导。<br>不过安装完成之后无法通过<a href="https://find.synology.com/" target="_blank" rel="noopener">https://find.synology.com/</a>查找到设备貌似是正常的，需要通过桌面应用程序<a href="https://cndl.synology.cn/download/Utility/Assistant/7.0.3-50049/Windows/synology-assistant-7.0.3-50049.exe?model=DS918%2B&bays=4&dsm_version=7.0.1&build_number=42218" target="_blank" rel="noopener">Synology Assistant</a>查找。</p>
+<p>磁盘阵列（RAID）我使用了群晖自己的SHR类型，可以根据目前硬盘的数量选择不同的RAID，多盘情况下和RAID5类似，不过空间利用率比RAID5高。可以根据自己持有的硬盘情况在<a href="https://www.synology.cn/zh-cn/support/RAID_calculator" target="_blank" rel="noopener">RAID容量计算器</a>中方便计算和对比。</p>
+<p>实测FTP传输速度30M/s左右，SMB传输速度10M/s左右，实在是不够看，可能是硬盘太渣。<br>声音也有点大，不过我放在柜子里，也不影响散热，考虑到400块的价格已经很香了。</p>
+<p><img data-src="https://s1.ax1x.com/2022/05/04/OVYyRK.md.png" alt="Moments也能正常使用"><br><img data-src="https://s1.ax1x.com/2022/05/04/OVYjds.md.png" alt="总览"></p>
+]]></content>
+      <categories>
+        <category>折腾</category>
+      </categories>
+      <tags>
+        <tag>NAS</tag>
+        <tag>群晖</tag>
+        <tag>蜗牛星际</tag>
+        <tag>捡垃圾</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用PN532破解并模拟无漏洞IC卡到手机</title>
     <url>/posts/pn532/</url>
     <content><![CDATA[<p>讨厌随身带门禁卡？物业肆意收取门禁卡费用？这里教你如何使用PN532模拟IC卡到手机/手环上。请在合法范围内使用。</p>

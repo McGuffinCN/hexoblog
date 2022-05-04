@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://guff.in/posts/synology_NAS/</loc>
+    
+    <lastmod>2022-05-04T08:09:47.101Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://guff.in/posts/pn532/</loc>
     
     <lastmod>2022-03-13T09:13:28.217Z</lastmod>
@@ -79,14 +86,14 @@
   </url>
   
   <url>
-    <loc>https://guff.in/categories/index.html</loc>
+    <loc>https://guff.in/originiums/index.html</loc>
     
     <lastmod>2019-05-10T03:57:01.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://guff.in/originiums/index.html</loc>
+    <loc>https://guff.in/categories/index.html</loc>
     
     <lastmod>2019-05-10T03:57:01.000Z</lastmod>
     
